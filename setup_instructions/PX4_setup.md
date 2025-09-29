@@ -1,7 +1,8 @@
 Setup based on PX4 Autopilot
 <details>
 
-<summary>What's that?</summary>
+<summary>What's PX4?</summary>
+
 - open software/hardware project serving as "brain" for all sorts of drones
 - Advantages: 
     - Good software intergration: Easy integration of sensors etc., safety features, controller integration, ...
@@ -10,6 +11,7 @@ Setup based on PX4 Autopilot
 - Do not confuse: 
     - PX4 Autopilot: The open-source system/project itself
     - PX6X: The specific hardware on which we are running PX4 Autopilot
+
 </details>
 
 # Interfaces:
