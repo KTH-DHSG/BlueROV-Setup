@@ -1,5 +1,16 @@
-Setup based on PX4 Autopilot, an open software/hardware project. 
-Advantage: Multiple manufacturers produce for PX4, if one product is discontinued, there is a plug-and-play replacement from another manufacturer. Also: Good software integration with e.g. QGroundControl
+Setup based on PX4 Autopilot
+<details>
+
+<summary>What's that?</summary>
+- open software/hardware project serving as "brain" for all sorts of drones
+- Advantages: 
+    - Good software intergration: Easy integration of sensors etc., safety features, controller integration, ...
+    - Open Source: Multiple manufacturers produce for PX4, if one product is discontinued, there is a plug-and-play replacement from another manufacturer. 
+    - Good software integration with e.g. QGroundControl
+- Do not confuse: 
+    - PX4 Autopilot: The open-source system/project itself
+    - PX6X: The specific hardware on which we are running PX4 Autopilot
+</details>
 
 # Interfaces:
 - Physical Interfaces
@@ -7,8 +18,8 @@ Advantage: Multiple manufacturers produce for PX4, if one product is discontinue
         - connect Fathom-X tether interface via USB to your computer
         - Establishes an ethernet connection to the whole BlueROV (i.e. the PX6X, but also e.g. the Jetson)
         - setup instructions: see below (todo: insert link)
-    - USB:
-        - connect directly to PX6X (requires removal of tube)
+    - USB-C:
+        - connect directly from your computer to PX6X (requires removal of tube)
         - Fallback if PX6X is not available over Ethernet
         - For now needed to update the firmware of the PX6X
 - Software interfaces:
@@ -60,10 +71,10 @@ To set these, go to "Analyze Tools > MavLink Console"
 # Overwrite the file (note the single > on first line)
 echo DEVICE=eth0 > /fs/microsd/net.cfg
 echo BOOTPROTO=fallback >> /fs/microsd/net.cfg
-echo IPADDR=192.168.1.X >> /fs/microsd/net.cfg    # Replace X with the respective adress above
+echo IPADDR=192.168.0.X >> /fs/microsd/net.cfg    # Replace X with the respective adress above
 echo NETMASK=255.255.255.0 >> /fs/microsd/net.cfg
-echo ROUTER=192.168.1.231 >> /fs/microsd/net.cfg  # Or whatever the router/DNS server adress is
-echo DNS=192.168.1.231 >> /fs/microsd/net.cfg
+echo ROUTER=192.168.0.231 >> /fs/microsd/net.cfg  # Or whatever the router/DNS server adress is
+echo DNS=192.168.0.231 >> /fs/microsd/net.cfg
 
 # Then reboot to apply
 reboot
