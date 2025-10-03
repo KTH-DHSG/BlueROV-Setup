@@ -31,12 +31,12 @@ Setup based on PX4 Autopilot
     - ROS2 interface: MavLink to ROS2 bridge (todo: insert link)
 
 # Flashing and Setting up PX4
-Theoretically, the flashing should be easily doable through QGroundControl ([see here](https://docs.px4.io/main/en/config/firmware.html)). For current firmware version v1.16.0 this however leads to an incomplete install (BlueROV airframe not selectable), so this procedure works instead:
+Theoretically, the flashing should be easily doable through QGroundControl ([like this](https://docs.px4.io/main/en/config/firmware.html)). For current firmware version v1.16.0 this however leads to an incomplete install (BlueROV airframe not selectable), so this procedure works instead:
 
 > [!TIP]  
-> The target we use below is currently only in the development release (v1.16.0.rc1), not in the latest stable release. Presumably this is why installing through QGroundControl does not work?
+> The target we use below is currently only available in the development release (v1.16.0.rc1), not in the latest stable release. Presumably this is why installing through QGroundControl does not work?
 
-Follow [spacelab setup](https://atmos.discower.io/pages/PX4/) for the first three steps ("PX4 Autopilot" section).
+Follow the [spacelab setup](https://atmos.discower.io/pages/PX4/) for the first three steps ("PX4 Autopilot" section).
 
 The firmware installation works similar, but we choose a _different target_ and _different default namespace_:
 
@@ -77,13 +77,16 @@ Probably easies to connect and set up one BlueROV at a time. Each connection get
 4. Apply settings
 
 ## BlueROV-side setup
+
+### PX4
+
 The network setup on robot side can be changed through QGroundControl. The current configuration is
 
-| BlueROV | IP adress    |
-|---------|--------------|
-| splash  | 192.168.0.10 |
-| bubble  | 192.168.0.11 |
-| glub    | 192.168.0.12 |
+| BlueROV | PX4 IP address    | Jetson IP address |
+|---------|-------------------|-------------------|
+| splash  | 192.168.0.10      | 192.168.0.20      |
+| bubble  | 192.168.0.11      | 192.168.0.21      |
+| glub    | 192.168.0.12      | 192.168.0.22      |
 
 To set these, go to "Analyze Tools > MavLink Console"
 
@@ -100,13 +103,23 @@ echo DNS=192.168.0.231 >> /fs/microsd/net.cfg
 reboot
 ```
 
+### Jetson 
+
+Under Settings > Network > Realtek Ethernet set a static IP with the addresses stated above. 
+
+> [IMPORTANT!]
+> This setup does _not_ allow the Jetson to access the internet. To achieve this, two methods are possible (plus the alternative setup described below).
+> 1. Enable IP forwarding and set up NAT (Network Address Translation) on your desktop computer 
+> 2. Take of the shell, connect an ethernet cable to the second ethernet port of the Jetson
+> Personally, I think that the alternative setup has a lot of advantages and simplifies working with the robots a lot.
+
 <details>
 
-<summary>Alternative setup directly over network</summary>
+<summary>__Alternative setup directly over network__</summary>
 
 A better setup could be that the BlueROVs are directly connected to the lab network. Then, any computer in the network could access them (i.e. also over Wifi). This could be rather easily achieved as follows:
 
-The blue Fathom-X box contains the same tether interface that is also in the BlueROV. The interface has an ethernet port, that is (in the current configuration) routed through an adapter board to the USB port of the Fathom-X. This ethernet port could instead be directly connected to a switch on the lab network (i.e. without the USB board in the Fathom-X). Any computer on the same network could then find the robots, and also the three-fold setup of the UBS-ethernet on user side would not be needed any more. 
+The blue Fathom-X box contains the same tether interface that is also in the BlueROV. The interface has an ethernet port, that is (in the current configuration) routed through an adapter board to the USB port of the Fathom-X. This ethernet port could instead be directly connected to a switch on the lab network (i.e. without the USB board in the Fathom-X). Any computer on the same network could then find the robots, and also the three-fold setup of the UBS-ethernet on user side would not be needed any more. IP addresses would centrally be assigned by DHCP reservation on network side through MAC address.
 
 ```
 Setup now:
@@ -140,7 +153,10 @@ Alternative setup:
                                                                             └──────────┘                     
 ```
 
-(If you're wondering what the interface is for at all: The tether is a 2-wire ethernet cable that is better for long distances - on both ends, this is then converted through the adapter to standard ethernet. For some reason, BlueRobotics decided that it is better to have this additionally converted on user-side to USB-ethernet.)
+(If you're wondering why the interface exists at all: The tether is a 2-wire ethernet cable that is better for long distances - on both ends, this is then converted through the adapter to standard ethernet. For some reason, BlueRobotics decided that it is better to have this additionally converted on user-side to USB-ethernet.)
+
+> [IMPORTANT!]
+> Before setting up this variant: Make sure that there are enough Ethernet ports available in the Marinarium (seems like their ethernet switch has not too many ports). Maybe necessary to buy an additional switch.
 </details>
 
 
