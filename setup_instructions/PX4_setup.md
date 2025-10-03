@@ -30,6 +30,24 @@ Setup based on PX4 Autopilot
         - Console interface under "Analyze Tools > MavLink Console" for advanced use cases
     - ROS2 interface: MavLink to ROS2 bridge (todo: insert link)
 
+# Flashing and Setting up PX4
+Theoretically, the flashing should be easily doable through QGroundControl ([see here](https://docs.px4.io/main/en/config/firmware.html)). For current firmware version v1.16.0 this however leads to an incomplete install (BlueROV airframe not selectable), so this procedure works instead:
+
+> [!TIP]  
+> The target we use below is currently only in the development release (v1.16.0.rc1), not in the latest stable release. Presumably this is why installing through QGroundControl does not work?
+
+Follow [spacelab setup](https://atmos.discower.io/pages/PX4/) for the first three steps ("PX4 Autopilot" section).
+
+The firmware installation works similar, but we choose a _different target_ and _different default namespace_:
+
+1. Connect the Pixhawk to your computer via serial. Make sure QGroundControl is closed.
+2. Navigate to the cloned PX4-Autopilot directory.
+3. Upload the firmware using:
+
+```
+PX4_UXRCE_DDS_NS=itrl_<robot name> make px4_fmu-v6x_uuv upload
+```
+
 # Communication Setup
 Communication mainly follows standard networking approaches -> Knowledge of setting up IP networks is advantageous
 - Fathom-X is simply a transparent ethernet bridge (without own IP adress or so), whole network is a standard ethernet network
