@@ -105,12 +105,12 @@ reboot
 
 ### Jetson 
 
-Under Settings > Network > Realtek Ethernet set a static IP with the addresses stated above. 
+Under Settings > Network > Realtek Ethernet set a static IP with the addresses stated above. The process is the same one as the user-side setup without the extra steps.
 
 > [IMPORTANT!]
 > This setup does _not_ allow the Jetson to access the internet. To achieve this, two methods are possible (plus the alternative setup described below).
 > 1. Enable IP forwarding and set up NAT (Network Address Translation) on your desktop computer 
-> 2. Take of the shell, connect an ethernet cable to the second ethernet port of the Jetson
+> 2. Take of the shell on the front (camera side), connect an ethernet cable to the second ethernet port of the Jetson
 > Personally, I think that the alternative setup has a lot of advantages and simplifies working with the robots a lot.
 
 <details>
