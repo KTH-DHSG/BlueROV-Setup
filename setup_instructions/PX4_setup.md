@@ -31,7 +31,7 @@ Setup based on PX4 Autopilot
     - ROS2 interface: MavLink to ROS2 bridge (todo: insert link)
 
 # Flashing and Setting up PX4
-Theoretically, the flashing should be easily doable through QGroundControl ([like this](https://docs.px4.io/main/en/config/firmware.html)). For current firmware version v1.16.0 this however leads to an incomplete install (BlueROV airframe not selectable), so this procedure works instead:
+Theoretically, the flashing should be easily doable through QGroundControl ([PX4 Doc > Config > Firmware](https://docs.px4.io/main/en/config/firmware.html)). For current firmware version v1.16.0 this however leads to an incomplete install (BlueROV airframe not selectable), so this procedure works instead:
 
 > [!TIP]  
 > The target we use below is currently only available in the development release (v1.16.0.rc1), not in the latest stable release. Presumably this is why installing through QGroundControl does not work?
@@ -51,7 +51,7 @@ PX4_UXRCE_DDS_NS=itrl_<robot name> make px4_fmu-v6x_uuv upload
 # Communication Setup
 Communication mainly follows standard networking approaches -> Knowledge of setting up IP networks is advantageous
 - Fathom-X is simply a transparent ethernet bridge (without own IP adress or so), whole network is a standard ethernet network
-- PX6X needs to be configured for communication over Ethernet. General instructions are [here](https://docs.px4.io/main/en/advanced_config/ethernet_setup), our setup follows:
+- PX6X needs to be configured for communication over Ethernet. General instructions are under [PX4 docs > Advanced Config > Ethernet Setup](https://docs.px4.io/main/en/advanced_config/ethernet_setup), our setup follows:
 
 Goal: Have all three BlueROVs connected to the same computer
 
