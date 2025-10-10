@@ -6,7 +6,9 @@
 
 # Todos BlueROV mods
 
-- [ ] Figure out what's wrong with the actuators
+- [x] Figure out what's wrong with the actuators
+- [ ] Correct buoyancy in assembled robot
+- [ ] Assemble other robots
 - [ ] Put ethernet switch and tether interface in bottom tube
     -> Later, it will be easy to install a water-tight plug s.t. the upper tube can easily be removed if desired
 
