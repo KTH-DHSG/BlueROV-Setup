@@ -22,12 +22,12 @@ curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-a
 sudo dpkg -i /tmp/ros2-apt-source.deb
 sudo apt update
 sudo apt upgrade -y
-sudo apt install ros-humble-desktop
-sudo apt install ros-dev-tools
+sudo apt install ros-humble-desktop -y
+sudo apt install ros-dev-tools -y
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 
 # Install realsense ros package
-udo apt install ros-$ROS_DISTRO-librealsense2* -y
+sudo apt install ros-$ROS_DISTRO-librealsense2* -y
 sudo apt install ros-$ROS_DISTRO-realsense2-camera -y
 sudo apt install ros-$ROS_DISTRO-realsense2-description -y
 

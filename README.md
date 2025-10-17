@@ -7,10 +7,14 @@
 # Todos BlueROV mods
 
 - [x] Figure out what's wrong with the actuators
-- [ ] Correct buoyancy in assembled robot
+- [ ] Correct buoyancy in assembled robot (do when the tank is unused)
+- [ ] Reassemble battery shelf to fit the BlueROVs (do with help)
 - [ ] Assemble other robots
+    - [x] Glub
+    - [ ] Bubble
 - [ ] Put ethernet switch and tether interface in bottom tube
     -> Later, it will be easy to install a water-tight plug s.t. the upper tube can easily be removed if desired
+- [ ] install MicroDDS on all
 
 **Small tasks for in between**
 - [ ] Prepare colors/names for the ROVs
@@ -33,3 +37,4 @@
 # To buy for BlueROV
 
 - [ ] Leak sensor board (Tafarrel/Pedro seem to have ordere only one yet?) quite pricy with 35$ p.p. https://bluerobotics.com/store/sensors-cameras/leak-sensor/sos-leak-sensor/
+
