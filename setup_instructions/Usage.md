@@ -11,7 +11,9 @@ If not already happened,
 
 2. Connect the Fathom-X Interface with a USB port on your computer on the one side and with the BlueROV tether on the other.
 
-![Fathom-X](img/Fathom-X.jpg)
+<p align="center">
+  <img width="300" src="img/Fathom-X.jpg">
+</p>
 
 If the robot is not connected after some time, remove and re-plug the USB connection. If the issue persists, check your network setup.
 
