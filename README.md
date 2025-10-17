@@ -15,6 +15,7 @@
 - [ ] Put ethernet switch and tether interface in bottom tube
     -> Later, it will be easy to install a water-tight plug s.t. the upper tube can easily be removed if desired
 - [ ] install MicroDDS on all
+- [ ] Test controlling multiple ROVs at once (can be dry test I guess?)
 
 **Small tasks for in between**
 - [ ] Prepare colors/names for the ROVs
