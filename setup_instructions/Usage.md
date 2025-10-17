@@ -13,6 +13,8 @@ If not already happened,
 
 **insert image**
 
+If the robot is not connected after some time, remove and re-plug the USB connection. If the issue persists, check your network setup.
+
 3. Open QGroundControl. After a short while, the robot should be connected and it should look like this:
 
 ![Connected](ready_to_fly.png)
