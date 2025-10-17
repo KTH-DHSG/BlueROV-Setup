@@ -29,15 +29,18 @@ If not already happened,
 ## Connect to Jetson
 
 1. See steps 1 and 2 above. 
+
 2. Verify that you have a connection to the robot by opening QGroundControl or 
 ```
 ping 192.168.0.<your robots IP>
 ```
+
 3. Connect to the Jetson over SSH via
 ```
 ssh discower@<jetson_IP>
 ```
 for user and PW 'discower'.
+
 4. Optional: Start all ROS services, e.g. start the Intel RealSense node.
 ```
 ros2 run realsense2_camera realsense2_camera_node
