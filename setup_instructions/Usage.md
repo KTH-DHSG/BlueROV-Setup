@@ -17,12 +17,12 @@ If the robot is not connected after some time, remove and re-plug the USB connec
 
 3. Open QGroundControl. After a short while, the robot should be connected and it should look like this:
 
-![Connected](ready_to_fly.png)
+![Connected](img/ready_to_fly.png)
 
 > [!NOTE]
 > It might also look like this:
 > 
-> ![Connected](ready_to_fly_2.png)
+> ![Connected](img/ready_to_fly_2.png)
 > 
 > This can happen as no remote control is configured - we use the BlueROV only via QGroundControl and Joystick. You can ignore this therefore. To verify if this is the issue, go to "Q">"Vehicle Configuration". Everything should be green besides of "Radio". 
 
@@ -31,15 +31,18 @@ If the robot is not connected after some time, remove and re-plug the USB connec
 ## Connect to Jetson
 
 1. See steps 1 and 2 above. 
+
 2. Verify that you have a connection to the robot by opening QGroundControl or 
 ```
 ping 192.168.0.<your robots IP>
 ```
+
 3. Connect to the Jetson over SSH via
 ```
 ssh discower@<jetson_IP>
 ```
 for user and PW 'discower'.
+
 4. Optional: Start all ROS services, e.g. start the Intel RealSense node.
 ```
 ros2 run realsense2_camera realsense2_camera_node
