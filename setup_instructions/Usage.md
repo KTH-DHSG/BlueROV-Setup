@@ -26,7 +26,9 @@ If the robot is not connected after some time, remove and re-plug the USB connec
 >
 > <img width="300" src="img/ready_to_fly_2.png">
 > 
-> This can happen as no "classical" radio remote control is configured - we use the BlueROV only via QGroundControl and Joystick. You can ignore the red "Not Ready" therefore, the vehicle is connected anyways. To verify that this is the reason for the warning, go to "Q">"Vehicle Configuration". Everything should be green besides of "Radio". 
+> You can most probably ignore this warning.
+> 
+> <details> <summary>Reason for warning:</summary> This can happen as no "classical" radio remote control is configured - we use the BlueROV only via QGroundControl and Joystick. You can ignore the red "Not Ready" therefore, the vehicle is connected anyways. To verify that this is the reason for the warning, go to "Q">"Vehicle Configuration". Everything should be green besides of "Radio". </details>
 
 4. Plug in the joystick, arm the vehicle and have fun! If you are connected, but something is not working, go to "Q">"Vehicle Configuration" and resolve the issues.
 
