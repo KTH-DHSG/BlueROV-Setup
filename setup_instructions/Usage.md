@@ -32,8 +32,9 @@ If the robot is not connected after some time, remove and re-plug the USB connec
 
 4. Plug in the joystick, arm the vehicle and have fun! If you are connected, but something is not working, go to "Q">"Vehicle Configuration" and resolve the issues.
 
-<img width="300" src="img/arming.png">
-
+<p align="center">
+   <img width="300" src="img/arming.png">
+</p>
 
 ## Connect to Jetson
 
@@ -57,6 +58,21 @@ ros2 run realsense2_camera realsense2_camera_node
 
 > [!NOTE]
 > The Jetson has by default no access to the internet. Refer to [PX4_setup.md](PX4_setup.md) for more information regarding package installation etc.
+
+## Start ROS communication
+
+PX4 and ROS2 can communicate using the [MicroXRCE-DDS client](https://docs.px4.io/main/en/ros2/user_guide#installation-setup). The client should already be installed on the Jetson. Once it is started, you can see all PX4 topics in ROS and command the robot from ROS. Start the connection like this:
+
+1. SSH to the Jetson and call
+```
+MicroXRCEAgent udp4 -p 8888
+```
+2. In QGroundControl, go to "Q">"Analyze Tools">"MAVLink Console" and call
+```
+uxrce_dds_client start -t udp -p 8888 -h <JETSON_IP>
+```
+
+You can test your connection using `ros2 topic list`.
 
 ## Open and close the tubes
 

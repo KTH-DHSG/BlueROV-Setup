@@ -29,8 +29,21 @@ echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 # Install realsense ros package
 sudo apt install ros-$ROS_DISTRO-librealsense2* -y
 sudo apt install ros-$ROS_DISTRO-realsense2-camera -y
+sudo apt install ros-$ROS_DISTRO-realsense2-camera --fix-missing -y
 sudo apt install ros-$ROS_DISTRO-realsense2-description -y
 
+# Install microRTPS-ROS2 bridge https://docs.px4.io/main/en/ros2/user_guide#installation-setup
+sudo apt install python3-setuptools -y
+sudo apt install python3-pip -y
+sudo pip3 install -U 'empy<4' pyros-genmsg
+git clone -b v2.4.3 https://github.com/eProsima/Micro-XRCE-DDS-Agent.git
+cd Micro-XRCE-DDS-Agent
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+sudo ldconfig /usr/local/lib/
 
 # Make a list of necessary spares
 # Documentation incl all 3D parts etc

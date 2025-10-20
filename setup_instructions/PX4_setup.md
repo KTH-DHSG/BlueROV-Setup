@@ -45,7 +45,7 @@ The firmware installation works similar, but we choose a _different target_ and 
 3. Upload the firmware using:
 
 ```
-PX4_UXRCE_DDS_NS=itrl_<robot name> make px4_fmu-v6x_uuv upload
+PX4_UXRCE_DDS_NS=<robot_name> make px4_fmu-v6x_uuv upload
 ```
 
 # Communication Setup
