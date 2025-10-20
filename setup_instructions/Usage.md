@@ -19,12 +19,12 @@ If the robot is not connected after some time, remove and re-plug the USB connec
 
 3. Open QGroundControl. After a short while, the robot should be connected and it should look like this:
 
-![Connected](img/ready_to_fly.png)
+<img width="300" src="img/ready_to_fly.png">
 
 > [!NOTE]
 > It might also look like this:
-> 
-> ![Connected](img/ready_to_fly_2.png)
+>
+> <img width="300" src="img/ready_to_fly_2.png">
 > 
 > This can happen as no "classical" radio remote control is configured - we use the BlueROV only via QGroundControl and Joystick. You can ignore this therefore. To verify if this is the issue, go to "Q">"Vehicle Configuration". Everything should be green besides of "Radio". 
 
