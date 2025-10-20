@@ -1,9 +1,9 @@
 # BlueROV-Setup
 
-- [PX4 setup](setup_instructions/PX4_setup.md)
-- [Jetson setup](setup_instructions/BlueROV_Jetson_setup.sh)
-- [Hardware setup](setup_instructions/hardware_setup.md)
-- [Quick hardware how-to](setup_instructions/Usage.md)
+- [Using the BlueROV](setup_instructions/Usage.md): How to get started on a readily-prepared system
+- [PX4 setup](setup_instructions/PX4_setup.md): How to set up software and communications
+- [Jetson setup](setup_instructions/BlueROV_Jetson_setup.sh): Install script for a newly flashed Jetson
+- [Hardware setup](setup_instructions/hardware_setup.md): Internal hardware setup
 
 # Todos BlueROV mods
 
