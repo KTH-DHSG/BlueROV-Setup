@@ -9,19 +9,22 @@
 
 - [x] Figure out what's wrong with the actuators
 - [ ] Correct buoyancy in assembled robot (do when the tank is unused)
-- [ ] Reassemble battery shelf to fit the BlueROVs (do with help)
+- [x] Reassemble battery shelf to fit the BlueROVs (do with help)
 - [ ] Assemble other robots
     - [x] Glub
     - [ ] Bubble
 - [ ] Put ethernet switch and tether interface in bottom tube
     -> Later, it will be easy to install a water-tight plug s.t. the upper tube can easily be removed if desired
 - [ ] install MicroDDS on all
+    - [x] Glub
+    - [ ] Splash
+    - [ ] Bubble
 - [ ] Test controlling multiple ROVs at once (can be dry test I guess?)
 
 **Small tasks for in between**
 - [ ] Prepare colors/names for the ROVs
 - [ ] Prepare rails for the other BlueROVs
-- [ ] Jetson/Jetpack install on other BlueROVs
+- [x] Jetson/Jetpack install on other BlueROVs
 
 **Tasks for later**
 - [ ] Add more intuitive controller:
