@@ -2,6 +2,12 @@
 
 This is a short tutorial on how to use the BlueROVs.
 
+## Table of Contents
+[Operate in manual mode](#operate-in-manual-mode): Establish connection to robot, arm the robot, manual steering
+[Connect to Jetson](#connect-to-jetson): Connect your PC/laptop to the Jetson
+[Start PX4/ROS communication](#start-px4ros-communication): Establish the bridge between PX4 messages and ROS messages. Allows to record data/control over ROS/...
+[Open and close the tubes](#open-and-close-the-tubes): Open and close the BlueROV, e.g. for loading batteries
+
 ## Operate in manual mode
 
 1. Setup
@@ -36,6 +42,8 @@ If the robot is not connected after some time, remove and re-plug the USB connec
    <img width="300" src="img/arming.png">
 </p>
 
+For control over ROS, you need to [start ROS communication](#start-px4ros-communication) and change the mode to "offboard".
+
 ## Connect to Jetson
 
 1. See steps 1 and 2 above. 
@@ -59,7 +67,7 @@ ros2 run realsense2_camera realsense2_camera_node
 > [!NOTE]
 > The Jetson has by default no access to the internet. Refer to [PX4_setup.md](PX4_setup.md) for more information regarding package installation etc.
 
-## Start ROS communication
+## Start PX4/ROS communication
 
 PX4 and ROS2 can communicate using the [MicroXRCE-DDS client](https://docs.px4.io/main/en/ros2/user_guide#installation-setup). The client should already be installed on the Jetson. Once it is started, you can see all PX4 topics in ROS and command the robot from ROS. Start the connection like this:
 
