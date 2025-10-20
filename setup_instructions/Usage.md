@@ -32,7 +32,7 @@ If the robot is not connected after some time, remove and re-plug the USB connec
 
 4. Plug in the joystick, arm the vehicle and have fun! If you are connected, but something is not working, go to "Q">"Vehicle Configuration" and resolve the issues.
 
-<img width="300" src="img/arming.jpg">
+<img width="300" src="img/arming.png">
 
 
 ## Connect to Jetson
