@@ -81,12 +81,11 @@ ros2 run realsense2_camera realsense2_camera_node
 
 **Closing the tubes**
 
+Basically everything in reverse:
+
 1. Make sure the pressure relief valve is detached
-
 2. Press in the end cap. Make sure that no cable is damaged
-
 3. Attach the pressure relief valve
-
 4. Attach the locking chord. They come in different lengths depending on tube size.
 
 
