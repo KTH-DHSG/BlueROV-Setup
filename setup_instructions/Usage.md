@@ -3,10 +3,10 @@
 This is a short tutorial on how to use the BlueROVs.
 
 ## Table of Contents
-[Operate in manual mode](#operate-in-manual-mode): Establish connection to robot, arm the robot, manual steering
-[Connect to Jetson](#connect-to-jetson): Connect your PC/laptop to the Jetson
-[Start PX4/ROS communication](#start-px4ros-communication): Establish the bridge between PX4 messages and ROS messages. Allows to record data/control over ROS/...
-[Open and close the tubes](#open-and-close-the-tubes): Open and close the BlueROV, e.g. for loading batteries
+- [Operate in manual mode](#operate-in-manual-mode): Establish connection to robot, arm the robot, manual steering
+- [Connect to Jetson](#connect-to-jetson): Connect your PC/laptop to the Jetson
+- [Start PX4/ROS communication](#start-px4ros-communication): Establish the bridge between PX4 messages and ROS messages. Allows to record data/control over ROS/...
+- [Open and close the tubes](#open-and-close-the-tubes): Open and close the BlueROV, e.g. for loading batteries
 
 ## Operate in manual mode
 
