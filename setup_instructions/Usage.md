@@ -1,6 +1,6 @@
 # Quick tutorial
 
-This is a short tutorial on how to use the BlueROVs with QGroundControl.
+This is a short tutorial on how to use the BlueROVs.
 
 ## Operate in manual mode
 
@@ -52,4 +52,41 @@ ros2 run realsense2_camera realsense2_camera_node
 
 > [!NOTE]
 > The Jetson has by default no access to the internet. Refer to [PX4_setup.md](PX4_setup.md) for more information regarding package installation etc.
+
+## Open and close the tubes
+
+**Opening the tubes**
+
+1. Remove the locking chord
+
+<p align="center">
+  <img width="300" src="img/locking_chord.jpg">
+</p>
+
+2. Remove the pressure relief valve
+
+<p align="center">
+  <img width="300" src="img/pressure_relief.jpg">
+</p>
+
+3. Detach the end cap with the black enclosure prying tool
+
+<p align="center">
+  <img width="300" src="img/prying_tool.jpg">
+</p>
+
+<p align="center">
+  <img width="300" src="img/prying.jpg">
+</p>
+
+**Closing the tubes**
+
+1. Make sure the pressure relief valve is detached
+
+2. Press in the end cap. Make sure that no cable is damaged
+
+3. Attach the pressure relief valve
+
+4. Attach the locking chord. They come in different lengths depending on tube size.
+
 

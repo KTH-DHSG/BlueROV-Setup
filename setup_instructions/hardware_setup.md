@@ -1,5 +1,7 @@
 # Hardware Setup
 
+This article is concerned with the internal setup of the robots. It is directed at everyone who wants to do own modifications on the hardware. For usage instructions, see [here](Usage.md).
+
 The basic hardware setup follows the instructions by [Blue Robotics](https://bluerobotics.com/learn/bluerov2-assembly)[^1]. In addition, some modifications have been made:
 
 - Replaced flight controller from BlueRobotics/Raspberry Pi-based with PX4 Autopilot (Holybro PX6X)
