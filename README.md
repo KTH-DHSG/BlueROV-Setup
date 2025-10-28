@@ -37,7 +37,7 @@
 # TODOs for documentation
 
 - [ ] add wiring diagram
-- [ ] add STLs
+- [x] add STLs
 
 # To buy for BlueROV
 
