@@ -2,7 +2,7 @@
 
 This article is concerned with the internal setup of the robots. It is directed at everyone who wants to do own modifications on the hardware. For usage instructions, see [here](Usage.md).
 
-The basic hardware setup follows the instructions by [Blue Robotics](https://bluerobotics.com/learn/bluerov2-assembly)[^1]. In addition, some modifications have been made:
+The basic hardware setup follows the instructions by [Blue Robotics](https://bluerobotics.com/learn/bluerov2-assembly) (**Note:** Make sure to select the "Heavy configuration" when looking at the instructions.). In addition, some modifications have been made:
 
 - Replaced flight controller from BlueRobotics/Raspberry Pi-based with PX4 Autopilot (Holybro PX6X)
 - Added top tube
@@ -21,7 +21,58 @@ The hardware instructions can still be useful for (e.g.)
 
 It is recommended to take a look at them!
 
-[^1]: Make sure to select the "Heavy configuration" when looking at the instructions.
+## Overview
+
+The BlueROV has three tubes:
+1. Lowest:
+	- Standard kit, unchanged
+	- Battery enclosure
+2. Mid:
+	- Standard kit
+	- Main "brain" of the robot: Contains all essential parts such as
+		- Flight controller (PX6X)
+		- ESCs
+		- Tether interface
+		- barometer, gyroscope (latter one built into PX6X)
+		- ...
+	- Tubes 1 and 2 are essential to control the robot in any way, even manual
+	- Modification:
+		- Added ethernet switch
+		- Added a shared power/ethernet connection to the top tube
+3. Upper:
+	- Our own mod
+	- Adding more autonomous capabilities through adding
+		- Jetson Orin NX 16GB with [carrier board](https://connecttech.com/product/boson-for-framos-carrier-board-for-nvidia-jetson-orin-nx/)
+		- Intel RealSense D435i
+
+For a more detailed view, take a look at the wiring diagram.
+
+## Wiring diagram
+
+(to be added by Cezary)
+
+## Motor setup
+
+The motor assignments in PX4 follow the numbering of BlueRobotics:
+
+<p align="center">
+  <img width="300" src="img/BROV2-thruster-location-heavy.png">
+</p>
+
+What to do if the wrong motors turn:
+
+Let's say you want motor 1 and 2 to move and send an appropriate signal. Instead, motor 5 and 6 move.
+
+In less evolved systems, you would need to make sure that the correct PWM output is connected to the correct motor. PX4, however, gives an easy way around this common problem:
+
+Under `Q > Vehicle Setup > Actuators`, you can got to the 'PWN MAIN'/'PWM AUX' tab. For each PWM output, you can select a routing of the output in the dropdown, i.e. that 'PWM 1:' is 'diabled', acts as 'Motor 1', ...
+
+You can try out the current routing in the 'Actuator Testing' tab and move each motor individually. (Take care of your fingers and other vulnerable things. Also don't run the motors for too long, they are designed to operate in water and will overheat outside.)
+
+<p align="center">
+  <img width="300" src="img/actuator_testing.png">
+</p>
+
 
 ## Vacuum testing
 
