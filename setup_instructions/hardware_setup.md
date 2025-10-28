@@ -65,12 +65,12 @@ Let's say you want motor 1 and 2 to move and send an appropriate signal. Instead
 
 In less evolved systems, you would need to make sure that the correct PWM output is connected to the correct motor. PX4, however, gives an easy way around this common problem:
 
-Under `Q > Vehicle Setup > Actuators`, you can got to the 'PWN MAIN'/'PWM AUX' tab. For each PWM output, you can select a routing of the output in the dropdown, i.e. that 'PWM 1:' is 'diabled', acts as 'Motor 1', ...
+Under `Q > Vehicle Setup > Actuators`, you can got to the 'PWN MAIN'/'PWM AUX' tab. For each PWM output, you can select a routing of the output in the dropdown, i.e. that 'MAIN 1:' is 'diabled', acts as 'Motor 1', ...
 
 You can try out the current routing in the 'Actuator Testing' tab and move each motor individually. (Take care of your fingers and other vulnerable things. Also don't run the motors for too long, they are designed to operate in water and will overheat outside.)
 
 <p align="center">
-  <img width="300" src="img/actuator_testing.png">
+  <img width="700" src="img/actuators_config.png">
 </p>
 
 
