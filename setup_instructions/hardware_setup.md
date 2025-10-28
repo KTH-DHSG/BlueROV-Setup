@@ -26,7 +26,7 @@ It is recommended to take a look at them!
 The BlueROV has three tubes:
 1. Lowest:
 	- Standard kit, unchanged
-	- Battery enclosure
+	- Contains battery
 2. Mid:
 	- Standard kit
 	- Main "brain" of the robot: Contains all essential parts such as
@@ -38,7 +38,7 @@ The BlueROV has three tubes:
 	- Tubes 1 and 2 are essential to control the robot in any way, even manual
 	- Modification:
 		- Added ethernet switch
-		- Added a shared power/ethernet connection to the top tube
+		- Added a combined power/ethernet connection to the top tube
 3. Upper:
 	- Our own mod
 	- Adding more autonomous capabilities through adding
@@ -59,7 +59,10 @@ The motor assignments in PX4 follow the numbering of BlueRobotics:
   <img width="300" src="img/BROV2-thruster-location-heavy.png">
 </p>
 
-What to do if the wrong motors turn:
+<details>
+
+<summary>💡 Help! I send the correct signal, but the wrong motors turn!</summary>
+
 
 Let's say you want motor 1 and 2 to move and send an appropriate signal. Instead, motor 5 and 6 move.
 
@@ -73,6 +76,7 @@ You can try out the current routing in the 'Actuator Testing' tab and move each 
   <img width="700" src="img/actuators_config.png">
 </p>
 
+</details>
 
 ## Vacuum testing
 
