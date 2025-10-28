@@ -11,6 +11,7 @@ This is a short tutorial on how to use the BlueROVs.
 ## Operate in manual mode
 
 1. Setup
+
 If not already happened, 
 - Install QGroundControl from the official resources
 - Make sure to follow the user-side setup in [PX4_setup.md](PX4_setup.md). 
@@ -20,8 +21,6 @@ If not already happened,
 <p align="center">
   <img width="300" src="img/Fathom-X.jpg">
 </p>
-
-If the robot is not connected after some time, remove and re-plug the USB connection. If the issue persists, check your network setup.
 
 3. Open QGroundControl. After a short while, the robot should be connected and it should look like this:
 
@@ -36,7 +35,11 @@ If the robot is not connected after some time, remove and re-plug the USB connec
 > 
 > <details> <summary>Reason for warning:</summary> This can happen as no "classical" radio remote control is configured - we use the BlueROV only via QGroundControl and Joystick. You can ignore the red "Not Ready" therefore, the vehicle is connected anyways. To verify that this is the reason for the warning, go to "Q">"Vehicle Configuration". Everything should be green besides of "Radio". </details>
 
+If the robot is not connected after some time, remove and re-plug the USB connection. If the issue persists, check your network setup.
+
 4. Plug in the joystick, arm the vehicle and have fun! If you are connected, but something is not working, go to "Q">"Vehicle Configuration" and resolve the issues.
+
+To arm the vehicle, make sure that "Manual" mode is selected from the dropdown in the top bar. Then, click the following:
 
 <p align="center">
    <img width="300" src="img/arming.png">

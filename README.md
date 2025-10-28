@@ -8,7 +8,7 @@
 # Todos BlueROV mods
 
 - [x] Figure out what's wrong with the actuators
-- [ ] Correct buoyancy in assembled robot (do when the tank is unused)
+* [x] Correct buoyancy in assembled robot (do when the tank is unused)
 - [x] Reassemble battery shelf to fit the BlueROVs (do with help)
 - [ ] Assemble other robots
     - [x] Glub
@@ -20,6 +20,9 @@
     - [ ] Splash
     - [ ] Bubble
 - [ ] Test controlling multiple ROVs at once (can be dry test I guess?)
+- [ ] Add startup scripts in Jetson and PX4 to 
+	- [ ] auto-start the MVALink-ROS2 Bridge (see Usage.md#Start PX4/ROS communication)
+	- [ ] auto-start camera node
 
 **Small tasks for in between**
 - [ ] Prepare colors/names for the ROVs
@@ -32,7 +35,7 @@
     - Right joystick: up-down/yaw
     - Implement in `/src/modules/uuv_att_control/uuv_att_control.cpp`
 - [ ] Bring Jetsons directly into the lab network
-- [ ] Maybe rethink the camera mount
+* [x] Maybe rethink the camera mount
 
 # TODOs for documentation
 
