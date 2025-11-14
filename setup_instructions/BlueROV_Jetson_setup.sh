@@ -32,6 +32,12 @@ sudo apt install ros-$ROS_DISTRO-realsense2-camera -y
 sudo apt install ros-$ROS_DISTRO-realsense2-camera --fix-missing -y
 sudo apt install ros-$ROS_DISTRO-realsense2-description -y
 
+# Install Nvidia CUDA
+sudo apt-get install cuda -y
+
+# Install Ultralytics and Supervision for YOLO
+sudo pip3 install ultralytics supervision
+
 # Install microRTPS-ROS2 bridge https://docs.px4.io/main/en/ros2/user_guide#installation-setup
 sudo apt install python3-setuptools -y
 sudo apt install python3-pip -y

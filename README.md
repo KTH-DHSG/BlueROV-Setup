@@ -4,6 +4,7 @@
 - [PX4 setup](setup_instructions/PX4_setup.md): How to set up software and communications
 - [Jetson setup](setup_instructions/BlueROV_Jetson_setup.sh): Install script for a newly flashed Jetson
 - [Hardware setup](setup_instructions/hardware_setup.md): Internal hardware setup
+- [Jetson OS](https://connecttech.com/resource-center/kdb373/): Custom Jetson Linux OS
 
 # Todos BlueROV mods
 
@@ -20,7 +21,7 @@
     - [ ] Splash
     - [ ] Bubble
 - [ ] Test controlling multiple ROVs at once (can be dry test I guess?)
-- [ ] Add startup scripts in Jetson and PX4 to 
+- [ ] Add startup scripts in Jetson and PX4 to
 	- [ ] auto-start the MVALink-ROS2 Bridge (see Usage.md#Start PX4/ROS communication)
 	- [ ] auto-start camera node
 
@@ -45,4 +46,3 @@
 # To buy for BlueROV
 
 - [ ] Leak sensor board (Tafarrel/Pedro seem to have ordere only one yet?) quite pricy with 35$ p.p. https://bluerobotics.com/store/sensors-cameras/leak-sensor/sos-leak-sensor/
-
