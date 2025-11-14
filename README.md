@@ -5,6 +5,7 @@
 - [Jetson setup](setup_instructions/BlueROV_Jetson_setup.sh): Install script for a newly flashed Jetson
 - [Hardware setup](setup_instructions/hardware_setup.md): Internal hardware setup
 - [Jetson OS](https://connecttech.com/resource-center/kdb373/): Custom Jetson Linux OS
+- [L4T Support Packages](https://connecttech.com/resource-center/l4t-board-support-packages/): Support Package
 
 # Todos BlueROV mods
 
