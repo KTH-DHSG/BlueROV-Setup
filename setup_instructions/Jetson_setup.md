@@ -53,8 +53,7 @@ After having configured the Internet access, we can proceed with the installatio
     </p>
 4. After the download is complete, continue to flashing the device.
 5. Select flashing over ssh and fill-in the IP address, username, and password. <strong>TIP!</strong> If by chance there are <code>apt</code> errors, ensure that the system date is set correctly to the current date.
-6. We can verify whether CUDA has been sucessfully installed by running:
-
+6. We can verify whether CUDA has been sucessfully installed by running:\
 <code>nvcc --version</code>
 
 ## Software Setup After Installation
