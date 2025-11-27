@@ -2,12 +2,11 @@
 
 - [Using the BlueROV](setup_instructions/Usage.md): How to get started on a readily-prepared system
 - [PX4 setup](setup_instructions/PX4_setup.md): How to set up software and communications
-- [Jetson setup](setup_instructions/BlueROV_Jetson_setup.sh): Install script for a newly flashed Jetson
-- [Jetson_internet](setup_instructions/Jetson_internet.md): Getting internet access to Jetson via tether
+- [Jetson OS and CUDA setup](setup_instructions/Jetson_setup.md): Flashing Linux with support packages and installing CUDA
+- [Jetson software setup](setup_instructions/BlueROV_Jetson_setup.sh): Install script for a newly flashed Jetson
+- [Internet on Jetson](setup_instructions/Jetson_internet.md): Getting internet access to Jetson via tether
 - [Hardware setup](setup_instructions/hardware_setup.md): Internal hardware setup
 - [Wiring diagram](setup_instructions/brov-wiring-diagram-inkscape.svg): for more details on our specific hardware adaptations
-- [Jetson OS](https://connecttech.com/resource-center/kdb373/): Custom Jetson Linux OS
-- [L4T Support Packages](https://connecttech.com/resource-center/l4t-board-support-packages/): Support Package
 
 # Todos BlueROV mods
 
