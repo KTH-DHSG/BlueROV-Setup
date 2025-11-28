@@ -35,6 +35,7 @@ Before we can begin the installation process, we need to install [Nvidia SDK Man
     <code>cd ..</code> \
     <code>sudo ./cti-flash.sh</code> \
 8. When prompted, select the appropriate settings for the current board (Orin NX on Boson extension board with default base configuration).
+9. <strong>TIP!</strong> After flashing is complete disconnect the USB C cable from the computer flashing the jetson. Sometimes it will prevent the Jetson from booting up and flashing would have to be done again.
 
 ## Configuring Internet Access
 To proceed with the configuration, we have to enable Internet access. One way of doing this is to connect the Jetson with an ethernet cable to the local network and using one of the monitors in the lab to proceed with the basic Linux user setup. After that is complete, open the terminal and get the assigned IP address using the command:
