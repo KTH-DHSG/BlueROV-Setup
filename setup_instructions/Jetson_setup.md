@@ -1,11 +1,12 @@
 # Jetson OS and CUDA Setup
-This tutorial encopases all that is needed to install Linux operating system with ConnectTech support packages
+This tutorial encopases all that is needed to install Linux operating system with ConnectTech support packages.
 ## Table of Contents
 - [Before Installation](#before-installation)
 - [Flashing Jetson with the Operating System](#flashing-jetson-with-the-operating-system)
 - [Configuring Internet Access](Jetson_internet.md)
 - [Installing Nvidia SDK](#installing-nvidia-sdk)
 - [Software Setup After Installation](#software-setup-after-installation)
+- [Reference Links](#reference-links)
 
 ## Before Installation
 Before we can begin the installation process, we need to install [Nvidia SDK Manager](https://developer.nvidia.com/sdk-manager). This step requires an active Nvidia account and unfortunately cannot be skipped.
@@ -62,3 +63,10 @@ To install the development software, clone this repository onto Jetson or paste 
 
 <code>sudo chmod +x BlueROV_Jetson_setup.sh</code>\
 <code>sudo ./BlueROV_Jetson_setup.sh</code>
+
+## Reference Links
+- [https://connecttech.com/resource-center/l4t-board-support-packages/](https://connecttech.com/resource-center/l4t-board-support-packages/)
+- [https://connecttech.com/ftp/pdf/CTIM-00095_Boson_Boson22_Manual.pdf](https://connecttech.com/ftp/pdf/CTIM-00095_Boson_Boson22_Manual.pdf)
+- [https://developer.nvidia.com/sdk-manager](https://developer.nvidia.com/sdk-manager)
+- [https://support.connecttech.com/hc/en-us/articles/4416099515931-CTI-L4T-Board-Support-Package-Installation-for-NVIDIA-JetPack-with-Connect-Tech-Jetson-Carriers](https://support.connecttech.com/hc/en-us/articles/4416099515931-CTI-L4T-Board-Support-Package-Installation-for-NVIDIA-JetPack-with-Connect-Tech-Jetson-Carriers)
+- [https://support.connecttech.com/hc/en-us/articles/4416086952603-Installing-Jetpack-SDK-Components-alongside-the-CTI-L4T-BSP](https://support.connecttech.com/hc/en-us/articles/4416086952603-Installing-Jetpack-SDK-Components-alongside-the-CTI-L4T-BSP)
