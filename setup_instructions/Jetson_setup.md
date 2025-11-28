@@ -70,3 +70,4 @@ To install the development software, clone this repository onto Jetson or paste 
 - [https://developer.nvidia.com/sdk-manager](https://developer.nvidia.com/sdk-manager)
 - [https://support.connecttech.com/hc/en-us/articles/4416099515931-CTI-L4T-Board-Support-Package-Installation-for-NVIDIA-JetPack-with-Connect-Tech-Jetson-Carriers](https://support.connecttech.com/hc/en-us/articles/4416099515931-CTI-L4T-Board-Support-Package-Installation-for-NVIDIA-JetPack-with-Connect-Tech-Jetson-Carriers)
 - [https://support.connecttech.com/hc/en-us/articles/4416086952603-Installing-Jetpack-SDK-Components-alongside-the-CTI-L4T-BSP](https://support.connecttech.com/hc/en-us/articles/4416086952603-Installing-Jetpack-SDK-Components-alongside-the-CTI-L4T-BSP)
+- [https://ninjalabo.ai/blogs/jetson_pytorch.html](https://ninjalabo.ai/blogs/jetson_pytorch.html)
