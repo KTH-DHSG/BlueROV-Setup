@@ -46,6 +46,7 @@ git clone --branch release/0.20 https://github.com/pytorch/vision torchvision
 cd torchvision
 BUILD_VERSION=0.20.0
 python3 setup.py install --user
+cd ..
 
 echo "Installing Python Modules..."
 python3 -m pip install -U ultralytics supervision
