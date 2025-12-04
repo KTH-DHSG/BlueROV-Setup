@@ -13,7 +13,7 @@ Before we can begin the installation process, we need to install [Nvidia SDK Man
 
 1. Enable the recovery mode on the Jetson. To enable the recovery mode follow the steps described in the [manual](https://connecttech.com/ftp/pdf/CTIM-00095_Boson_Boson22_Manual.pdf). In short, connect the Jetson to its power supply, press and hold the recovery button (SW3) and press-release the reset button (SW2). When in the recovery mode, the radiator fan should spin at maximum speed.
 
-2. Connect the Jetson using USB C to your computer.
+2. Connect the Jetson using its USB C port to your computer.
 
 ## Flashing Jetson with the Operating System
 1. Open Nvidia SDK Manager.
@@ -27,7 +27,7 @@ Before we can begin the installation process, we need to install [Nvidia SDK Man
     <img width="800" src="img/sdk2.png">
     </p>
 4. After downloading the modules, on the prompt to flash the board, press skip.
-5. Download a suitable [CTI support package for Jetpack 6.2](https://connecttech.com/resource-center/l4t-board-support-packages/) (DO NOT download RealTime OS), or use this [direct link to the package](https://connecttech.com/ftp/Drivers/CTI-L4T-ORIN-NX-NANO-36.4.3-V009.tgz).
+5. Download a suitable [CTI support package for Jetpack 6.2](https://connecttech.com/resource-center/l4t-board-support-packages/) (DO NOT download RealTime OS), or use this [direct link to the package](https://connecttech.com/ftp/Drivers/CTI-L4T-ORIN-NX-NANO-36.4.3-V009.tgz). Make sure that the extracted folder containing the files is named <strong>CTI-L4T</strong>.
 6. Unzip the support package archive and make sure the top-most folder is called <strong>CTI-L4T</strong> and place it here: <code>/home/$USER/nvidia/nvidia_sdk/JetPack_6.2_Linux_JETSON_ORIN_NX_TARGETS/Linux_for_Tegra</code> where <strong>$USER</strong> is your account username.
 
 7. From terminal, go into <strong>CTI-L4T</strong> directory and execute \
@@ -36,7 +36,7 @@ Before we can begin the installation process, we need to install [Nvidia SDK Man
     <code>cd ..</code> \
     <code>sudo ./cti-flash.sh</code>
 8. When prompted, select the appropriate settings for the current board (Boson for Orin, Orin NX, Base, Default).
-9. <strong>TIP!</strong> After flashing is complete disconnect the USB C cable from the computer flashing the Jetson (after the flashing scripts exits). Sometimes it will prevent the Jetson from booting up and flashing would have to be done again.
+9. <strong>TIP!</strong> After flashing is complete disconnect the USB C cable from the computer flashing the Jetson (after the flashing script exits). Sometimes it may prevent the Jetson from booting up and flashing will have to be done again.
 
 ## Configuring Internet Access
 To proceed with the configuration, we have to enable Internet access. One way of doing this is to connect the Jetson with an ethernet cable to the local network and using one of the monitors in the lab to proceed with the basic Linux user setup. After that is complete, open the terminal and get the assigned IP address using the command:
