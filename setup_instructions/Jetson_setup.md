@@ -11,7 +11,7 @@ This tutorial encopases all that is needed to install Linux operating system wit
 ## Before Installation
 Before we can begin the installation process, we need to install [Nvidia SDK Manager](https://developer.nvidia.com/sdk-manager). This step requires an active Nvidia account and unfortunately cannot be skipped.
 
-1. Enable the recovery mode on the Jetson. To enable the recovery mode follow the steps described in the [manual](https://connecttech.com/ftp/pdf/CTIM-00095_Boson_Boson22_Manual.pdf). In short, connect the Jetson to its power supply, press and hold the recovery button (SW3) and press-release the reset button (SW2). When in the recovery mode the cooling fan should remain spinning.
+1. Enable the recovery mode on the Jetson. To enable the recovery mode follow the steps described in the [manual](https://connecttech.com/ftp/pdf/CTIM-00095_Boson_Boson22_Manual.pdf). In short, connect the Jetson to its power supply, press and hold the recovery button (SW3) and press-release the reset button (SW2). When in the recovery mode, the radiator fan should spin at maximum speed.
 
 2. Connect the Jetson using USB C to your computer.
 
@@ -34,9 +34,9 @@ Before we can begin the installation process, we need to install [Nvidia SDK Man
     <code>sudo chmod +x install.sh</code> \
     <code>sudo ./install.sh</code> \
     <code>cd ..</code> \
-    <code>sudo ./cti-flash.sh</code> \
-8. When prompted, select the appropriate settings for the current board (Orin NX on Boson extension board with default base configuration).
-9. <strong>TIP!</strong> After flashing is complete disconnect the USB C cable from the computer flashing the jetson. Sometimes it will prevent the Jetson from booting up and flashing would have to be done again.
+    <code>sudo ./cti-flash.sh</code>
+8. When prompted, select the appropriate settings for the current board (Boson for Orin, Orin NX, Base, Default).
+9. <strong>TIP!</strong> After flashing is complete disconnect the USB C cable from the computer flashing the Jetson (after the flashing scripts exits). Sometimes it will prevent the Jetson from booting up and flashing would have to be done again.
 
 ## Configuring Internet Access
 To proceed with the configuration, we have to enable Internet access. One way of doing this is to connect the Jetson with an ethernet cable to the local network and using one of the monitors in the lab to proceed with the basic Linux user setup. After that is complete, open the terminal and get the assigned IP address using the command:
@@ -59,7 +59,7 @@ After having configured the Internet access, we can proceed with the installatio
 <code>nvcc --version</code>
 
 ## Software Setup After Installation
-To install the development software, clone this repository onto Jetson or paste the contents of <code>BlueROV_Jetson_setup.sh</code> into a new file.
+To install the development software, clone this repository onto Jetson or paste the contents of <code>BlueROV_Jetson_setup.sh</code> into a new file. Cloning the repository requires a SSH key assosiacted with your account added to the group's codebase (you will not be able to clone it otherwise).
 
 <code>sudo chmod +x BlueROV_Jetson_setup.sh</code>\
 <code>sudo ./BlueROV_Jetson_setup.sh</code>
