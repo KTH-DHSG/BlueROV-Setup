@@ -8,6 +8,9 @@ sudo apt install software-properties-common
 sudo add-apt-repository universe -y
 sudo apt update && sudo apt install curl -y
 
+sudo apt install python3-setuptools -y
+sudo apt install python3-pip -y
+
 echo "Installing ROS2 Humble..."
 export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F\" '{print $4}')
 
@@ -19,6 +22,7 @@ sudo apt upgrade -y
 sudo apt install -y \
     ros-humble-desktop \
     ros-dev-tools
+source /opt/ros/humble/setup.bash
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 
 echo "Installing Nvidia Wheel and PyTorch..."
@@ -61,8 +65,6 @@ sudo apt install -y \
 echo "Installing microRTPS-ROS2 bridge..."
 # Install microRTPS-ROS2 bridge https://docs.px4.io/main/en/ros2/user_guide#installation-setup
 
-sudo apt install python3-setuptools -y
-sudo apt install python3-pip -y
 sudo pip3 install -U 'empy<4' pyros-genmsg
 git clone -b v2.4.3 https://github.com/eProsima/Micro-XRCE-DDS-Agent.git
 cd Micro-XRCE-DDS-Agent
