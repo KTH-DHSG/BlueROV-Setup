@@ -23,7 +23,8 @@ echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 
 echo "Installing Nvidia Wheel and PyTorch..."
 CUSPARSELT_URL="https://developer.download.nvidia.com/compute/cusparselt/redist/libcusparse_lt/linux-aarch64"
-CUSPARSELT_VERSION="0.7.1.0"CUSPARSELT_NAME="libcusparse_lt-linux-aarch64-${CUSPARSELT_VERSION}-archive"
+CUSPARSELT_VERSION="0.7.1.0"
+CUSPARSELT_NAME="libcusparse_lt-linux-aarch64-${CUSPARSELT_VERSION}-archive"
 mkdir -p tmp_cusparselt && cd tmp_cusparselt
 curl --retry 3 -OLs "${CUSPARSELT_URL}/${CUSPARSELT_NAME}.tar.xz"
 tar xf "${CUSPARSELT_NAME}.tar.xz"
