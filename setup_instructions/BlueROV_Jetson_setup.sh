@@ -48,7 +48,6 @@ cd torchvision
 BUILD_VERSION=0.20.0
 python3 setup.py install --user
 cd ..
-rm -rf torchvision
 
 echo "Installing Python YOLO Modules..."
 python3 -m pip install -U ultralytics supervision
