@@ -62,7 +62,7 @@ After having configured the Internet access, we can proceed with the installatio
 To install the development software, clone this repository onto Jetson or paste the contents of <code>BlueROV_Jetson_setup.sh</code> into a new file. Cloning the repository requires a SSH key assosiacted with your account added to the group's codebase (you will not be able to clone it otherwise).
 
 <code>sudo chmod +x BlueROV_Jetson_setup.sh</code>\
-<code>sudo ./BlueROV_Jetson_setup.sh</code>
+<code>./BlueROV_Jetson_setup.sh</code>
 
 ## Reference Links
 - [https://connecttech.com/resource-center/l4t-board-support-packages/](https://connecttech.com/resource-center/l4t-board-support-packages/)
