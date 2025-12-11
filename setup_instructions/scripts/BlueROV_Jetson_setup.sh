@@ -56,10 +56,18 @@ cd ..
 echo "Installing Python YOLO Modules..."
 python3 -m pip install -U ultralytics supervision
 
+echo "Building librealsense..."
+sudo apt install -y \
+    v4l-utils \
+    libgles2-mesa-dev \
+    libegl1-mesa-dev
+sudo ./libuvc_installation.sh
+echo "export DISPLAY=:0" >> ~/.bashrc
+echo "export LIBVA_DRIVER_NAME=nvidia" >> ~/.bashrc
+echo "export EGL_PLATFORM=egl" >> ~/.bashrc
+
 echo "Installing ROS2 Humble Packages..."
 sudo apt install -y \
-    ros-$ROS_DISTRO-librealsense2* \
-    ros-$ROS_DISTRO-realsense2-* \
     ros-$ROS_DISTRO-vision-msgs
 
 echo "Installing microRTPS-ROS2 bridge..."
@@ -75,4 +83,4 @@ make
 sudo make install
 sudo ldconfig /usr/local/lib/
 
-
+echo -e "Installation complete!"
