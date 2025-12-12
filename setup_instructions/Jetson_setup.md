@@ -1,12 +1,14 @@
 # Jetson OS and CUDA Setup
 This tutorial encopases all that is needed to install Linux operating system with ConnectTech support packages.
 ## Table of Contents
-- [Before Installation](#before-installation)
-- [Flashing Jetson with the Operating System](#flashing-jetson-with-the-operating-system)
-- [Configuring Internet Access](Jetson_internet.md)
-- [Installing Nvidia SDK](#installing-nvidia-sdk)
-- [Software Setup After Installation](#software-setup-after-installation)
-- [Reference Links](#reference-links)
+- [Jetson OS and CUDA Setup](#jetson-os-and-cuda-setup)
+  - [Table of Contents](#table-of-contents)
+  - [Before Installation](#before-installation)
+  - [Flashing Jetson with the Operating System](#flashing-jetson-with-the-operating-system)
+  - [Configuring Internet Access](#configuring-internet-access)
+  - [Installing Nvidia SDK](#installing-nvidia-sdk)
+  - [Software Setup After Installation](#software-setup-after-installation)
+  - [Reference Links](#reference-links)
 
 ## Before Installation
 Before we can begin the installation process, we need to install [Nvidia SDK Manager](https://developer.nvidia.com/sdk-manager). This step requires an active Nvidia account and unfortunately cannot be skipped.
@@ -71,3 +73,6 @@ To install the development software, clone this repository onto Jetson or paste 
 - [https://support.connecttech.com/hc/en-us/articles/4416099515931-CTI-L4T-Board-Support-Package-Installation-for-NVIDIA-JetPack-with-Connect-Tech-Jetson-Carriers](https://support.connecttech.com/hc/en-us/articles/4416099515931-CTI-L4T-Board-Support-Package-Installation-for-NVIDIA-JetPack-with-Connect-Tech-Jetson-Carriers)
 - [https://support.connecttech.com/hc/en-us/articles/4416086952603-Installing-Jetpack-SDK-Components-alongside-the-CTI-L4T-BSP](https://support.connecttech.com/hc/en-us/articles/4416086952603-Installing-Jetpack-SDK-Components-alongside-the-CTI-L4T-BSP)
 - [https://ninjalabo.ai/blogs/jetson_pytorch.html](https://ninjalabo.ai/blogs/jetson_pytorch.html)
+- [https://forums.developer.nvidia.com/t/building-opencv-with-cuda/285744](https://forums.developer.nvidia.com/t/building-opencv-with-cuda/285744)
+- [https://github.com/AastaNV/JEP](https://github.com/AastaNV/JEP)
+- [https://github.com/realsenseai/librealsense/blob/master/doc/installation_jetson.md](https://github.com/realsenseai/librealsense/blob/master/doc/installation_jetson.md)
