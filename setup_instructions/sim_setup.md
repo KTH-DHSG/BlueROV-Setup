@@ -112,11 +112,17 @@
     
     The hardware is now being mimicked in software!
 
-5. You can now plug in a joystick to control the simulator with QGC. If you don't have one the easiest way is to enable the virtual joystick in QGroundControl as explained [here](https://docs.qgroundcontrol.com/Stable_V4.3/en/qgc-user-guide/settings_view/virtual_joystick.html). I recommend to play with it to get to know it, and to use only Position mode, Stabilized mode and Acro mode (Manual mode should only be used if necessary, but otherwise avoid it).
+5. **Teleoperating the BlueROV2:**
 
-6. To send input commands through ROS2, you need to setup the vehicle in Offboard mode in QGroundControl. Typically, it does not show in the mode section since it is hidden by default so you need to click on the right arrow at the top of the Mode selection, then turn on the *Edit Displayed Flight Modes" slides and turn off the *Offboard* slider.
+   You can now plug in a joystick to control the simulator with QGC. If you don't have one the easiest way is to enable the virtual joystick in QGroundControl as explained [here](https://docs.qgroundcontrol.com/Stable_V4.3/en/qgc-user-guide/settings_view/virtual_joystick.html). I recommend to play with it to get to know it, and to use only Position mode, Stabilized mode and Acro mode (Manual mode should only be used if necessary, but otherwise avoid it).
 
-7. Next, you need to have a heartbeat ROS2 node that constantly sends the offboard signal non-stop at more than 10Hz, this will allow you to arm the vehicle in QGC since by default Offboard will not let you. Note that you arm by clicking on the *Ready To Fly* text, then *Arm* and then moving the slider to the right.
+6. **Getting to Offboard mode:**
+
+   To send input commands through ROS2, you need to setup the vehicle in Offboard mode in QGroundControl. Typically, it does not show in the mode section since it is hidden by default so you need to click on the right arrow at the top of the Mode selection, then turn on the *Edit Displayed Flight Modes" slides and turn off the *Offboard* slider.
+
+7. **Sending ROS2 control actuation:**
+
+   Next, you need to have a heartbeat ROS2 node that constantly sends the offboard signal non-stop at more than 10Hz, this will allow you to arm the vehicle in QGC since by default Offboard will not let you. Note that you arm by clicking on the *Ready To Fly* text, then *Arm* and then moving the slider to the right.
     
     Now you can send inputs through the ``/fmu/in/vehicle_thrust_setpoint`` and ``/fmu/in/vehicle_torque_setpoint`` topics, the ``/fmu/in/vehicle_rates_setpoint`` topic or the ``/fmu/in/actuator_motors`` topic (depending on your heartbeat node type). You can find an example of my thrust_and_torque hearbeat node here: [https://kth-my.sharepoint.com/:u:/g/personal/vnfa_ug_kth_se/IQB1s1Xqxo_QSptLPT2AlvvkAd5DF3hMsSnaLL8aPBzlZ88?e=jHeFbE.](https://kth-my.sharepoint.com/:u:/g/personal/vnfa_ug_kth_se/IQB1s1Xqxo_QSptLPT2AlvvkAZ1-ba43ZigrbaFGL0r4nk8?e=un4wrJ). I recommend to always use thrust_and_torque.
 
