@@ -30,14 +30,3 @@ apt install -y \
     unzip \
     falkon \
     mesa-utils
-
-
-echo "------------------------------------"
-echo "**Setting NOVNC systemd service**"
-echo "------------------------------------"
-cp ./novnc/novnc-start.sh /usr/local/bin/
-chmod +x /usr/local/bin/novnc-start.sh
-cp ./novnc/config/novnc.service
-systemctl daemon-reload
-systemctl enable novnc
-systemctl start novnc

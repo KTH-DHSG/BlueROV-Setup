@@ -8,6 +8,7 @@ This tutorial encopases all that is needed to install Linux operating system wit
   - [Configuring Internet Access](#configuring-internet-access)
   - [Installing Nvidia SDK](#installing-nvidia-sdk)
   - [Software Setup After Installation](#software-setup-after-installation)
+    - [Setting up remote desktop using NoVNC](#setting-up-remote-desktop-using-novnc)
   - [Reference Links](#reference-links)
 
 ## Before Installation
@@ -62,6 +63,11 @@ After having configured the Internet access, we can proceed with the installatio
 
 ## Software Setup After Installation
 To install the development software, clone this repository onto Jetson or paste the contents of <code>BlueROV_Jetson_setup.sh</code> into a new file. Cloning the repository requires a SSH key assosiacted with your account added to the group's codebase (you will not be able to clone it otherwise).
+
+### Setting up remote desktop using NoVNC
+To install novnc server, run novnc_setup.sh which atthis point should have already be invoked in the main installation script. To start the server manually, enter these commands into the terminal:
+<code>x11vnc -display :0 -rfbport 5900 -forever -shared -nopw</code>
+<code>websockify --web=/usr/share/novnc/ 0.0.0.0:6080 localhost:5900</code>
 
 <code>sudo chmod +x BlueROV_Jetson_setup.sh</code>\
 <code>./BlueROV_Jetson_setup.sh</code>
