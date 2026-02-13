@@ -1,6 +1,6 @@
 ## Installation process (in Linux):
 >[!NOTE]
->we recommend using Ubuntu 22.04, ROS2 Humble and Gazebo Harmonic.
+>We recommend using Ubuntu 22.04, ROS2 Humble and Gazebo Harmonic.
 
 1. **Install DHSG PX4 fork and the DHSG custom gz models:**
     ```bash
