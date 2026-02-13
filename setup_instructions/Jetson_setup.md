@@ -64,13 +64,17 @@ After having configured the Internet access, we can proceed with the installatio
 ## Software Setup After Installation
 To install the development software, clone this repository onto Jetson or paste the contents of <code>BlueROV_Jetson_setup.sh</code> into a new file. Cloning the repository requires a SSH key assosiacted with your account added to the group's codebase (you will not be able to clone it otherwise).
 
+<code>sudo chmod +x BlueROV_Jetson_setup.sh</code>\
+<code>./BlueROV_Jetson_setup.sh</code>
+
 ### Setting up remote desktop using NoVNC
 To install novnc server, run novnc_setup.sh which atthis point should have already be invoked in the main installation script. To start the server manually, enter these commands into the terminal:
 <code>x11vnc -display :0 -rfbport 5900 -forever -shared -nopw</code>
 <code>websockify --web=/usr/share/novnc/ 0.0.0.0:6080 localhost:5900</code>
 
-<code>sudo chmod +x BlueROV_Jetson_setup.sh</code>\
-<code>./BlueROV_Jetson_setup.sh</code>
+To access the remote desktop on your development machine, open your browser and input the Jetson's IP address followed by port 6080. For example:
+<code>http://192.168.0.22:6080/</code>
+For Jetson with IP 192.168.0.22 with vnc port 6080
 
 ## Reference Links
 - [https://connecttech.com/resource-center/l4t-board-support-packages/](https://connecttech.com/resource-center/l4t-board-support-packages/)
