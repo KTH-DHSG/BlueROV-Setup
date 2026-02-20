@@ -36,7 +36,7 @@
 
 **Tasks for later**
 
-- [ ] Add more intuitive controller:
+- [x] Add more intuitive controller:
   - Left joystick: forward/sideward
   - Right joystick: up-down/yaw
   - Implement in `/src/modules/uuv_att_control/uuv_att_control.cpp`
