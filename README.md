@@ -16,13 +16,13 @@
 - [x] Reassemble battery shelf to fit the BlueROVs (do with help)
 - [ ] Assemble other robots
   - [x] Glub
-  - [ ] Bubble
+  - [ ] <del>Bubble</del>
 - [ ] Put ethernet switch and tether interface in bottom tube
     -> Later, it will be easy to install a water-tight plug s.t. the upper tube can easily be removed if desired
 - [ ] install MicroDDS on all
   - [x] Glub
   - [x] Splash
-  - [ ] Bubble
+  - [ ] <del>Bubble</del>
 - [ ] Test controlling multiple ROVs at once (can be dry test I guess?)
 - [ ] Add startup scripts in Jetson and PX4 to
   - [ ] auto-start the MVALink-ROS2 Bridge (see Usage.md#Start PX4/ROS communication)
@@ -30,8 +30,8 @@
 
 **Small tasks for in between**
 
-- [ ] Prepare colors/names for the ROVs
-- [ ] Prepare rails for the other BlueROVs
+- [x] Prepare colors/names for the ROVs
+- [x] Prepare rails for the other BlueROVs
 - [x] Jetson/Jetpack install on other BlueROVs
 
 **Tasks for later**
