@@ -14,7 +14,7 @@
 - [x] Figure out what's wrong with the actuators
 * [x] Correct buoyancy in assembled robot (do when the tank is unused)
 - [x] Reassemble battery shelf to fit the BlueROVs (do with help)
-- [ ] Assemble other robots
+- [x] Assemble other robots
   - [x] Glub
   - [ ] <del>Bubble</del>
 - [ ] Put ethernet switch and tether interface in bottom tube
