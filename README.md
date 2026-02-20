@@ -63,4 +63,4 @@
 # To assemble
 
 - [ ] Docking station.
-- [ ] Passive gripper: boat hook pole mechanism.
+- [ ] Passive gripper: boat hook pole mechanism; and test payload with comically large handle.
