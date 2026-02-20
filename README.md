@@ -19,7 +19,7 @@
   - [ ] <del>Bubble</del>
 - [ ] Put ethernet switch and tether interface in bottom tube
     -> Later, it will be easy to install a water-tight plug s.t. the upper tube can easily be removed if desired
-- [ ] install MicroDDS on all
+- [x] install MicroDDS on all
   - [x] Glub
   - [x] Splash
   - [ ] <del>Bubble</del>
