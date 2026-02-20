@@ -9,7 +9,7 @@
 - [SITL Simulation setup](setup_instructions/sim_setup.md): PX4 gz STIL simulation setup
 - [Wiring diagram](setup_instructions/brov-wiring-diagram-inkscape.svg): for more details on our specific hardware adaptations
 
-# Todos BlueROV mods
+# TODOs BlueROV mods
 
 - [x] Figure out what's wrong with the actuators
 * [x] Correct buoyancy in assembled robot (do when the tank is unused)
@@ -43,6 +43,12 @@
 - [x] Bring Jetsons directly into the lab network
 * [x] Maybe rethink the camera mount
 
+# TODOs for stereo vision
+
+- [x] Train YOLO underwater to recognize otehr BROV2s.
+- [ ] Train YOLO underwater to recognize divers and pose estimation.
+- [ ] Calibrate stereo-depth underwater.
+
 # TODOs for documentation
 
 - [x] add wiring diagram
@@ -51,3 +57,10 @@
 # To buy for BlueROV
 
 - [ ] Leak sensor board (Tafarrel/Pedro seem to have ordered only one yet?) quite pricy with $35 p.p. https://bluerobotics.com/store/sensors-cameras/leak-sensor/sos-leak-sensor/
+- [ ] Thick line/cable for pulling stuff underwater (Cezary).
+- [x] Materials for docking station.
+
+# To assemble
+
+- [ ] Docking station.
+- [ ] Passive gripper: boat hook pole mechanism.
