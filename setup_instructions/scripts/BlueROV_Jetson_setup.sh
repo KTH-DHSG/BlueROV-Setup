@@ -21,7 +21,8 @@ sudo apt update
 sudo apt upgrade -y
 sudo apt install -y \
     ros-humble-desktop \
-    ros-dev-tools
+    ros-dev-tools \
+    ros-humble-cv-bridge
 source /opt/ros/humble/setup.bash
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 
