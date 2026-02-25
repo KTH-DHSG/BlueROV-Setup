@@ -17,7 +17,7 @@ This is a short tutorial on how to use the BlueROVs. We recommend first doing th
 > [!NOTE]
 > If you are operating **Bubble** (the BlueROV2 without the extra tube with the stereo d435i cam and the Jetson) ignore all the instructions from the [Connect to Jetson](#connect-to-Jetson) all the way to the end. 
 
-2. Connect the battery to the XT90 connector (check the [Open and close the tubes](#open-and-close-the-tubes) section to know how open the tube where it resides). Make sure to hear the two difference notes with a space of about 3s of silence in between, if you only hear a continuous song the BlueROV2 has not started the ESCs correctly and you need to unplug and plug the battery again.
+2. Connect the battery to the XT90 connector (check the [Open and close the tubes](#open-and-close-the-tubes) section to know how open the tube where it resides). Make sure to hear the two difference notes with a space of about 3s of silence in between, if you only hear a continuous song the BlueROV2 has not started the ESCs correctly and you need to unplug and plug the battery again. Another way to see if it has started correctly is that the PX4 should have two continuous lights, a green and an orange one.
 <p align="center">
   <img width="300" src="img/battery.jpg">
 </p>
