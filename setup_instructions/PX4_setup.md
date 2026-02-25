@@ -65,7 +65,7 @@ Probably the easiest is to connect and set up one BlueROV at a time. Each Fathom
 - 192.168.0.2 for bubble
 - 192.168.0.3 for glub
 
-The number is not very important as long as it is a free IP for your system/network and it is not already used for the PX4 IP address or Jetson IP address show in the table down-below. To setup the connection IP number do the following:
+The number is not very important as long as it is a free IP for your system/network and it is not already used for the PX4 IP address or Jetson IP address show in the table down-below. However, if you want to use ROS2 with PX4 keep this same exact numbering. To setup the connection IP number do the following:
 
 1. Go to Settings > Network > Add
 2. Under Identity > Name, choose
@@ -108,9 +108,9 @@ echo DNS=192.168.0.231 >> /fs/microsd/net.cfg
 reboot
 ```
 
-Rebooting through the MavLink Console sometimes does not work. You can also go to Vehicle Configuration > Parameters tab and then click Tools > Reboot.
+Rebooting through the MavLink Console sometimes does not work. You can also go to Vehicle Configuration > Parameters tab and then click Tools > Reboot Vehicle.
 
-Now you should be able to run the Micro-XRCE-DDS-Agent and use ROS2 topics as described in the simulator section: [sim_setup.md](sim_setup.md).
+Now you should be able to run the Micro-XRCE-DDS-Agent and use ROS2 topics as described in the simulator section: [sim_setup.md](sim_setup.md). Note that if you have changed the FXTI address you need to change the UXRCE_DDS_AG_IP parameter in the Parameters tab of QGC to the signed int32 equivalent of your FXTI IP address.
 
 ### Jetson 
 
