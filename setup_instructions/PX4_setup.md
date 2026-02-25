@@ -93,7 +93,7 @@ The network setup on robot side can be changed through QGroundControl. The curre
 | bubble  | 192.168.0.2       | 192.168.0.11      | 192.168.0.21      |
 | glub    | 192.168.0.3       | 192.168.0.12      | 192.168.0.22      |
 
-They should already be set correctly and **we recommend to not touch this**, but in case you need to you can change them by doing the following: go to "Analyze Tools > MavLink Console". Then type params (or any other keyword so that you can see the console shows "nsh>" instead of just "". Then input:
+They should already be set correctly and **we recommend to not touch this**, but in case you need to you can change them by doing the following: go to "Analyze Tools > MavLink Console". Then type params (or any other keyword) so that you can see the console shows "nsh>" instead of just "". Then input:
 
 ```
 # Overwrite the file (note the single > on first line)
