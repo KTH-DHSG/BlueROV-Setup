@@ -60,15 +60,17 @@ Current setup: Follow original setup closely
 USB-Switch connecting to all Fathom-X interfaces. Each USB-cable should be detected as individual USB-ethernet interface in system network settings.
 
 ## User-side setup
-Probably easies to connect and set up one BlueROV at a time. Each connection gets its own network setting with own IP adress in the 192.168.0.X range, e.g.
-- 192.168.0.1
-- 192.168.0.2
-- 192.168.0.3
+Probably the easiest is to connect and set up one BlueROV at a time. Each Fathom-X Interface box (FXTI) connection gets its own network setting with own IP adress in the 192.168.0.X range. We recommend to use:
+- 192.168.0.1 for splash
+- 192.168.0.2 for bubble
+- 192.168.0.3 for glub
+
+The number is not very important as long as it is a free IP for your system/network and it is not already used for the PX4 IP address or Jetson IP address show in the table down-below. To setup the connection IP number do the following:
 
 1. Go to Settings > Network > Add
 2. Under Identity > Name, choose
     - a profile name
-    - MAC address: Choose from dropdown
+    - MAC address: Choose from dropdown (it is typically the one with the longest name).
 3. Under IPv4, choose
     - IPv4 Method: Manual
     - Address: 192.168.0.X (see above)
@@ -76,25 +78,28 @@ Probably easies to connect and set up one BlueROV at a time. Each connection get
     - Gateway: 0.0.0.0
 4. Apply settings
 
+> [!NOTE]  
+> The first time you connect to QGC with the BlueROV2 and the FXTI it can take up to 60s to appear. If it takes longer you likely setup something wrong.
+
 ## BlueROV-side setup
 
 ### PX4
 
 The network setup on robot side can be changed through QGroundControl. The current configuration is
 
-| BlueROV | PX4 IP address    | Jetson IP address |
-|---------|-------------------|-------------------|
-| splash  | 192.168.0.10      | 192.168.0.20      |
-| bubble  | 192.168.0.11      | 192.168.0.21      |
-| glub    | 192.168.0.12      | 192.168.0.22      |
+| BlueROV | FXTI address      | PX4 IP address    | Jetson IP address |
+|---------|-------------------|-------------------|-------------------|
+| splash  | 192.168.0.1       | 192.168.0.10      | 192.168.0.20      |
+| bubble  | 192.168.0.2       | 192.168.0.11      | 192.168.0.21      |
+| glub    | 192.168.0.3       | 192.168.0.12      | 192.168.0.22      |
 
-To set these, go to "Analyze Tools > MavLink Console"
+They should already be set correctly and **we recommend to not touch this**, but in case you need to you can change them by doing the following: go to "Analyze Tools > MavLink Console". Then type params (or any other keyword so that you can see the console shows "nsh>" instead of just "". Then input:
 
 ```
 # Overwrite the file (note the single > on first line)
 echo DEVICE=eth0 > /fs/microsd/net.cfg
 echo BOOTPROTO=fallback >> /fs/microsd/net.cfg
-echo IPADDR=192.168.0.X >> /fs/microsd/net.cfg    # Replace X with the respective adress above
+echo IPADDR=192.168.0.X >> /fs/microsd/net.cfg    # Replace X with the respective PX4 adress above
 echo NETMASK=255.255.255.0 >> /fs/microsd/net.cfg
 echo ROUTER=192.168.0.231 >> /fs/microsd/net.cfg  # Or whatever the router/DNS server adress is
 echo DNS=192.168.0.231 >> /fs/microsd/net.cfg
@@ -102,6 +107,10 @@ echo DNS=192.168.0.231 >> /fs/microsd/net.cfg
 # Then reboot to apply
 reboot
 ```
+
+Rebooting through the MavLink Console sometimes does not work. You can also go to Vehicle Configuration > Parameters tab and then click Tools > Reboot.
+
+Now you should be able to run the Micro-XRCE-DDS-Agent and use ROS2 topics as described in the simulator section: [sim_setup.md](sim_setup.md).
 
 ### Jetson 
 
