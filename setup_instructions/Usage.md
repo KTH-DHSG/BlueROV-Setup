@@ -62,7 +62,7 @@ Connecting the Xbox controller through Bluetooth is also always recommended to r
    <img width="300" src="img/xbox_controller.jpg">
 </p>
 
-For control over ROS, you need to [start ROS communication](#start-px4ros-communication) and change the mode to "offboard".
+For control over ROS, you need to [start ROS communication](#start-px4ros-communication) and change the mode to "offboard". **NOTE that for Bubble we use a different connection setup.**
 
 ## Connect to Jetson
 
