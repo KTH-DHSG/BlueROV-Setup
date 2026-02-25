@@ -1,6 +1,6 @@
 # Quick tutorial
 
-This is a short tutorial on how to use the BlueROVs.
+This is a short tutorial on how to use the BlueROVs. We recommend first doing the SITL gz simulator setup in [SITL Simulation setup](sim_setup.md).
 
 ## Table of Contents
 - [Open and close the tubes](#open-and-close-the-tubes): Open and close the BlueROV, e.g. for loading batteries
@@ -10,19 +10,25 @@ This is a short tutorial on how to use the BlueROVs.
 
 ## Operate in manual mode
 
-1. Setup
-
-If not already happened, 
+1. Setup: If not already happened, 
 - Install QGroundControl from the official resources
-- Make sure to follow the user-side setup in [PX4_setup.md](PX4_setup.md). 
+- Make sure to follow the user-side setup in [PX4_setup.md](PX4_setup.md).
 
-2. Connect the Fathom-X Interface with a USB port on your computer on the one side and with the BlueROV tether on the other.
+> [!NOTE]
+> If you are operating **Bubble** (the BlueROV2 without the extra tube with the stereo d435i cam and the Jetson) ignore all the instructions from the [Connect to Jetson](#connect-to-Jetson) all the way to the end. 
+
+2. Connect the battery to the XT90 connector (check the [Open and close the tubes](#open-and-close-the-tubes) section to know how open the tube where it resides). Make sure to hear the two difference notes with a space about 3s of silence in between, if you only hear a continuous song the BlueROV2 has not started the ESCs correctly and you need to unplug and plug the battery again.
+<p align="center">
+  <img width="300" src="img/battery.jpg">
+</p>
+
+3. Connect the Fathom-X Interface with a USB port on your computer on the one side and with the BlueROV tether on the other.
 
 <p align="center">
   <img width="300" src="img/Fathom-X.jpg">
 </p>
 
-3. Open QGroundControl. After a short while, the robot should be connected and it should look like this:
+4. Open QGroundControl. After a short while, the robot should be connected and it should look like this:
 
 <img width="300" src="img/ready_to_fly.png">
 
@@ -37,12 +43,23 @@ If not already happened,
 
 If the robot is not connected after some time, remove and re-plug the USB connection. If the issue persists, check your network setup.
 
-4. Plug in the joystick, arm the vehicle and have fun! If you are connected, but something is not working, go to "Q">"Vehicle Configuration" and resolve the issues.
+5. Plug in the joystick, arm the vehicle and have fun! If you are connected, but something is not working, go to "Q">"Vehicle Configuration" and resolve the issues (most likely you need to tick the Enable joystick box in the Joystick tab).
 
 To arm the vehicle, make sure that "Manual" mode is selected from the dropdown in the top bar. Then, click the following:
 
 <p align="center">
    <img width="300" src="img/arming.png">
+</p>
+
+We also strongly recommend to setup an arm (button 6 in xbox) and a disarm (button 4 in xbox) button before any operations so you can safely and quickly disarm it if needed. This can be setup in Vehicle Configuration > Joystick > Button Assignment.
+
+Connecting the Xbox controller through Bluetooth is also always recommended to reduce the number of cables in the tank. To do so you need to first turn the controller (maintain press on the Xbox symbol - turning it off is done by a longer maintain press) and put it in binding mode (press the smaller button on the top of the controller). You should then be able to see and pair it using common Ubuntu Bluetooth window. If you are experiencing issues we recommend installing the [xpad-neo](https://github.com/atar-axis/xpadneo) driver and updating the firmware in the controller (through the Windows Xbox app). To test it works you can use the [gamepad testet](https://hardwaretester.com/gamepad).
+
+> [!NOTE]
+> Other people might bind your controller while you are away and you will need to re-pair it again afterwards, if you are seeing your controlling connecting and disconnecting from Bluetooth really fast, you need to re-pair.
+
+<p align="center">
+   <img width="300" src="img/xbox_controller.jpg">
 </p>
 
 For control over ROS, you need to [start ROS communication](#start-px4ros-communication) and change the mode to "offboard".
