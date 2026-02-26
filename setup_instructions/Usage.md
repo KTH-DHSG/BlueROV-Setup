@@ -7,7 +7,7 @@ This is a short tutorial on how to use the BlueROVs. We recommend first doing th
 - [Operate in manual mode](#operate-in-manual-mode): Establish connection to robot, arm the robot, manual steering
 - [Connect to Jetson](#connect-to-jetson): Connect your PC/laptop to the Jetson
 - [Start PX4/ROS communication](#start-px4ros-communication): Establish the bridge between PX4 messages and ROS messages. Allows to record data/control over ROS/...
-- [Setup lights switch](#light-switch): how to setup the lights to a Joystick switch.
+- [Setup lights switch](#lights-switch): how to setup the lights to a Joystick switch.
 
 ## Operate in manual mode
 
