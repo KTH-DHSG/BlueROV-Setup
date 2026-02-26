@@ -7,6 +7,7 @@ This is a short tutorial on how to use the BlueROVs. We recommend first doing th
 - [Operate in manual mode](#operate-in-manual-mode): Establish connection to robot, arm the robot, manual steering
 - [Connect to Jetson](#connect-to-jetson): Connect your PC/laptop to the Jetson
 - [Start PX4/ROS communication](#start-px4ros-communication): Establish the bridge between PX4 messages and ROS messages. Allows to record data/control over ROS/...
+- [Setup lights switch](#light-switch): how to setup the lights to a Joystick switch.
 
 ## Operate in manual mode
 
@@ -138,3 +139,31 @@ Basically everything in reverse:
 4. Attach the locking chord. They come in different lengths depending on tube size.
 
 
+## Lights switch
+1. To setup the light switch you first need to modify your QGC. Go to Documents/QGroundControl/MavlinkActions folder and add a file called actuators.json with the following inside:
+```bash
+{
+  "version": 1,
+  "fileType": "MavlinkActions",
+  "actions": [
+    {
+      "label": "Lights ON",
+      "description": "Turn lights on",
+      "mavCmd": 187,
+      "param1": 1
+    },
+    {
+      "label": "Lights OFF",
+      "description": "Turn lights off",
+      "mavCmd": 187,
+      "param1": -1
+    }
+  ]
+}
+```
+
+2. Next, enter QGC, go to the Application Settings > Fly View and in MavLink Actions select your actuators.json for both Fly View Actions and Joystick Actions.
+
+3. Then, go to Vehicle Configuration settings > Actuators, and in the PWM AUX tab on the right select the first AUX 1 to be Peripheral via Actuator Set 1.
+
+4. Lastly, go to Joystick > Button assignment and setup one button to be Lights ON and one to be Lights OFF. Now you can arm the vehicle and test the lights!
