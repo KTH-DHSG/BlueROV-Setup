@@ -132,4 +132,4 @@
     
     Now you can send inputs through the ``/fmu/in/vehicle_thrust_setpoint`` and ``/fmu/in/vehicle_torque_setpoint`` topics, the ``/fmu/in/vehicle_rates_setpoint`` topic or the ``/fmu/in/actuator_motors`` topic (depending on your heartbeat node type). You can find an example of my thrust_and_torque hearbeat node here: [https://kth-my.sharepoint.com/:u:/g/personal/vnfa_ug_kth_se/IQB1s1Xqxo_QSptLPT2AlvvkAd5DF3hMsSnaLL8aPBzlZ88?e=jHeFbE.](https://kth-my.sharepoint.com/:u:/g/personal/vnfa_ug_kth_se/IQB1s1Xqxo_QSptLPT2AlvvkAZ1-ba43ZigrbaFGL0r4nk8?e=un4wrJ). I recommend to always use thrust_and_torque.
 
-9. If you want an example of a ROS2 controller working in the simulator you can check the **Stabilized Control** from [here](https://github.com/KTH-DHSG/bluerov2_control). You may need to ask for permission to see the repo, if so email [Victor](vnfa@kth.se).
+9. If you want an example of a ROS2 controller working in the simulator you can check the **Stabilized Control** or **PID Position Control** from [here](https://github.com/KTH-DHSG/bluerov2_control). You may need to ask for permission to see the repo, if so email [Victor](vnfa@kth.se).
