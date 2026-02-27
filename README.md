@@ -45,9 +45,11 @@
 
 # TODOs for stereo vision
 
-- [x] Train YOLO underwater to recognize otehr BROV2s.
-- [ ] Train YOLO underwater to recognize divers and pose estimation.
+- [x] Train YOLO underwater to recognize other BROV2s.
 - [ ] Calibrate stereo-depth underwater.
+- [ ] Check USB 3.0 connection for stereo-cam to Jetson, maybe through USB-C to USB-C
+- [ ] Train YOLO underwater to recognize divers and pose estimation.
+
 
 # TODOs for documentation
 
@@ -59,8 +61,10 @@
 - [ ] Leak sensor board (Tafarrel/Pedro seem to have ordered only one yet?) quite pricy with $35 p.p. https://bluerobotics.com/store/sensors-cameras/leak-sensor/sos-leak-sensor/
 - [ ] Thick line/cable for pulling stuff underwater (Cezary).
 - [x] Materials for docking station.
+- [ ] Extra tether connectors and HDMI dummys for Jetsons.
 
 # To assemble
 
 - [ ] Docking station.
 - [ ] Passive gripper: boat hook pole mechanism; and test payload with comically large handle.
+- [ ] Create a third tether cable to FXTI box with the extra connectors.
