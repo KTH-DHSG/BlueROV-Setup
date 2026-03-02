@@ -82,7 +82,7 @@
 
     You can also run the simulator with the KTH Water Tank by using:
 
-   ```bash
+    ```bash
     PX4_GZ_WORLD=kthtanklab make px4_sitl_uuv gz_uuv_bluerov2_heavy
     ```
     
