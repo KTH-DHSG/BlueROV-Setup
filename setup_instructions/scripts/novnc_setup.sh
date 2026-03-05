@@ -4,8 +4,8 @@ echo "------------------------------------"
 echo "**Installing NOVNC Server**"
 echo "------------------------------------"
 
-apt update && \
-apt install -y \
+sudo apt update && \
+sudo apt install -y \
     dbus-x11 \
     sudo \
     bash \
