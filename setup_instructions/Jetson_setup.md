@@ -67,6 +67,8 @@ To install the development software, clone this repository onto Jetson or paste 
 <code>sudo chmod +x BlueROV_Jetson_setup.sh</code>\
 <code>./BlueROV_Jetson_setup.sh</code>
 
+It is imperative that the script executes for the current user and NOT with sudo. Using sudo will cause certain packages to not be installed and thus accessible for the default use
+
 ### Setting up remote desktop using NoVNC
 To install novnc server, run novnc_setup.sh which atthis point should have already be invoked in the main installation script. To start the server manually, enter these commands into the terminal:
 <code>x11vnc -display :0 -rfbport 5900 -forever -shared -nopw</code>
