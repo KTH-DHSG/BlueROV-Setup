@@ -1,6 +1,9 @@
 # Jetson OS and CUDA Setup
+
 This tutorial encopases all that is needed to install Linux operating system with ConnectTech support packages.
+
 ## Table of Contents
+
 - [Jetson OS and CUDA Setup](#jetson-os-and-cuda-setup)
   - [Table of Contents](#table-of-contents)
   - [Before Installation](#before-installation)
@@ -9,9 +12,11 @@ This tutorial encopases all that is needed to install Linux operating system wit
   - [Installing Nvidia SDK](#installing-nvidia-sdk)
   - [Software Setup After Installation](#software-setup-after-installation)
     - [Setting up remote desktop using NoVNC](#setting-up-remote-desktop-using-novnc)
+    - [Setting up Nvidia TensorRT for YOLO acceleration](#setting-up-nvidia-tensorrt-for-yolo-acceleration)
   - [Reference Links](#reference-links)
 
 ## Before Installation
+
 Before we can begin the installation process, we need to install [Nvidia SDK Manager](https://developer.nvidia.com/sdk-manager). This step requires an active Nvidia account and unfortunately cannot be skipped.
 
 1. Enable the recovery mode on the Jetson. To enable the recovery mode follow the steps described in the [manual](https://connecttech.com/ftp/pdf/CTIM-00095_Boson_Boson22_Manual.pdf). In short, connect the Jetson to its power supply, press and hold the recovery button (SW3) and press-release the reset button (SW2). When in the recovery mode, the radiator fan should spin at maximum speed.
@@ -19,29 +24,31 @@ Before we can begin the installation process, we need to install [Nvidia SDK Man
 2. Connect the Jetson using its USB C port to your computer.
 
 ## Flashing Jetson with the Operating System
+
 1. Open Nvidia SDK Manager.
 
 2. Select Jetpack 6.2 rev. 2 (it can be hidden under all versions button).
-    <p align="center">
-    <img width="800" src="img/sdk1.png">
-    </p>
+<p align="center">
+<img width="800" src="img/sdk1.png">
+</p>
 3. Select the following modules to be installed:
-    <p align="center">
-    <img width="800" src="img/sdk2.png">
-    </p>
+<p align="center">
+<img width="800" src="img/sdk2.png">
+</p>
 4. After downloading the modules, on the prompt to flash the board, press skip.
 5. Download a suitable [CTI support package for Jetpack 6.2](https://connecttech.com/resource-center/l4t-board-support-packages/) (DO NOT download RealTime OS), or use this [direct link to the package](https://connecttech.com/ftp/Drivers/CTI-L4T-ORIN-NX-NANO-36.4.3-V009.tgz). Make sure that the extracted folder containing the files is named <strong>CTI-L4T</strong>.
 6. Unzip the support package archive and make sure the top-most folder is called <strong>CTI-L4T</strong> and place it here: <code>/home/$USER/nvidia/nvidia_sdk/JetPack_6.2_Linux_JETSON_ORIN_NX_TARGETS/Linux_for_Tegra</code> where <strong>$USER</strong> is your account username.
 
 7. From terminal, go into <strong>CTI-L4T</strong> directory and execute \
-    <code>sudo chmod +x install.sh</code> \
-    <code>sudo ./install.sh</code> \
-    <code>cd ..</code> \
-    <code>sudo ./cti-flash.sh</code>
+   <code>sudo chmod +x install.sh</code> \
+   <code>sudo ./install.sh</code> \
+   <code>cd ..</code> \
+   <code>sudo ./cti-flash.sh</code>
 8. When prompted, select the appropriate settings for the current board (Boson for Orin, Orin NX, Base, Default).
 9. <strong>TIP!</strong> After flashing is complete disconnect the USB C cable from the computer flashing the Jetson (after the flashing script exits). Sometimes it may prevent the Jetson from booting up and flashing will have to be done again.
 
 ## Configuring Internet Access
+
 To proceed with the configuration, we have to enable Internet access. One way of doing this is to connect the Jetson with an ethernet cable to the local network and using one of the monitors in the lab to proceed with the basic Linux user setup. After that is complete, open the terminal and get the assigned IP address using the command:
 
 <code>hostname -I</code>
@@ -49,19 +56,22 @@ To proceed with the configuration, we have to enable Internet access. One way of
 For configuring the Internet access with the tether attached, see [Getting internet access to Jetson via tether](Jetson_internet.md).
 
 ## Installing Nvidia SDK
+
 After having configured the Internet access, we can proceed with the installation of Nvidia graphics card drivers.
+
 1. Open Nvidia SDK Manager.
 2. Proceed with the same selection as in [Flashing jetson with the Operating System](#flashing-jetson-with-the-operating-system) until module selection.
 3. In the module selection, select the following:
-    <p align="center">
-    <img width="800" src="img/sdk3.png">
-    </p>
+<p align="center">
+<img width="800" src="img/sdk3.png">
+</p>
 4. After the download is complete, continue to flashing the device.
 5. Select flashing over ssh and fill-in the IP address, username, and password. <strong>TIP!</strong> If by chance there are <code>apt</code> errors, ensure that the system date is set correctly to the current date.
 6. We can verify whether CUDA has been sucessfully installed by running:\
-<code>nvcc --version</code>
+   <code>nvcc --version</code>
 
 ## Software Setup After Installation
+
 To install the development software, clone this repository onto Jetson or paste the contents of <code>BlueROV_Jetson_setup.sh</code> into a new file. Cloning the repository requires a SSH key assosiacted with your account added to the group's codebase (you will not be able to clone it otherwise).
 
 <code>sudo chmod +x BlueROV_Jetson_setup.sh</code>\
@@ -70,6 +80,7 @@ To install the development software, clone this repository onto Jetson or paste 
 It is imperative that the script executes for the current user and NOT with sudo. Using sudo will cause certain packages to not be installed and thus accessible for the default use
 
 ### Setting up remote desktop using NoVNC
+
 To install novnc server, run novnc_setup.sh which atthis point should have already be invoked in the main installation script. To start the server manually, enter these commands into the terminal:\
 <code>x11vnc -display :0 -rfbport 5900 -forever -shared -nopw</code> \
 <code>websockify --web=/usr/share/novnc/ 0.0.0.0:6080 localhost:5900</code>
@@ -78,7 +89,17 @@ To access the remote desktop on your development machine, open your browser and 
 <code>http://192.168.0.22:6080/</code>
 For Jetson with IP 192.168.0.22 with vnc port 6080
 
+### Setting up Nvidia TensorRT for YOLO acceleration
+
+1. Log-in into your Nvidia developer account here: [https://docs.nvidia.com/deeplearning/tensorrt/latest/installing-tensorrt/installing.html](https://docs.nvidia.com/deeplearning/tensorrt/latest/installing-tensorrt/installing.html) and download <code> TensorRT 10.3 GA for L4T and CUDA 12.6 DEB local repo Package</code> under <code>TensorRT 10.3 GA for JetPack</code> for Ubuntu 22.04.
+2. Using the terminal, install this example package: \
+   <code>cd Downloads</code>
+   <code>sudo dpkf -i nv-tensorrt-local-tegra-repo-ubuntu2204-10.3.0-cuda-12.6_1.0-1_arm64.deb</code>
+3. After the installation, do what the prompt says and copy the keychain, for example: \
+   <code>sudo cp /car/nv-tensorrt-local-tegra-repo-ubuntu2204-10.3.0-cuda-12.5/nv-tensorrt-local-tegra-E39D0E0C-keyring.gpg /usr/share/keyrings/</code>
+
 ## Reference Links
+
 - [https://connecttech.com/resource-center/l4t-board-support-packages/](https://connecttech.com/resource-center/l4t-board-support-packages/)
 - [https://connecttech.com/ftp/pdf/CTIM-00095_Boson_Boson22_Manual.pdf](https://connecttech.com/ftp/pdf/CTIM-00095_Boson_Boson22_Manual.pdf)
 - [https://developer.nvidia.com/sdk-manager](https://developer.nvidia.com/sdk-manager)
