@@ -50,6 +50,9 @@
 - [ ] Check USB 3.0 connection for stereo-cam to Jetson, maybe through USB-C to USB-C
 - [ ] Train YOLO underwater to recognize divers and pose estimation.
 
+# TODOs for SITL simulation
+
+- [ ] Create a multi-agent water tank simulation with multiple brov2s using https://github.com/DISCOWER/discower_launch/tree/main/discower_launch/launch
 
 # TODOs for documentation
 
