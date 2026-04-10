@@ -1,6 +1,6 @@
 # FreeCAD v1.1 build0 Arch module
 # https://www.freecad.org
-mtllib docking station simplified.mtl
+mtllib Unnamed-docking station simplified.mtl
 o docking station simplified
 usemtl color_727980
 v -0.0 30.0 0.0

@@ -30,3 +30,7 @@ If you simply need to change the height and docking offest values you can do so 
 </p>
 
 Feel free to explore the CAD file. There are more variables for detailed adjustments of the docking shell, its dimensions as well as the aluminum extrusion arrangement.
+
+## Debugging
+
+- There is some problems with exporting `.obj` files in FreeCAD 1.1.0. Exporting the part into an STL file and then reopining that file and exproting it into OBJ file does the trick though.
