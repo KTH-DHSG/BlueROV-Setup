@@ -17,7 +17,7 @@ To install the docking station in the tank you can use the aluminum extrusions t
 
 ## Files
 
-There are four different CAD files in different formats that can be used for your project [`.obj`](../STLs/docking_station/DockingStationv2.obj), [`.step`](../STLs/docking_station/DockingStationv2.step), [.stl`](../STLs/docking_station/DockingStationv2.stl) and [`.FCStd`](../STLs/docking_station/DockingStationv2.FCStd).
+There are four different CAD files in different formats that can be used for your project [`.obj`](../STLs/docking_station/DockingStationv2.obj), [`.step`](../STLs/docking_station/DockingStationv2.step), [`.stl`](../STLs/docking_station/DockingStationv2.stl) and [`.FCStd`](../STLs/docking_station/DockingStationv2.FCStd).
 
 ## Customization
 
