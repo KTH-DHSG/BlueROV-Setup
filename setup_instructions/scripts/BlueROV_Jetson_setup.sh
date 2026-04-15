@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "------------------------------------"
+echo "** Install step (1/4)"
+echo "------------------------------------"
+
 sudo apt update && sudo apt install -y locales
 sudo locale-gen en_US.UTF-8
 sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
@@ -26,7 +30,11 @@ sudo apt install -y \
 source /opt/ros/humble/setup.bash
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 
+echo "------------------------------------"
+echo "** Install step (2/4)"
+echo "------------------------------------"
 echo "Installing Nvidia Wheel and PyTorch..."
+
 CUSPARSELT_URL="https://developer.download.nvidia.com/compute/cusparselt/redist/libcusparse_lt/linux-aarch64"
 CUSPARSELT_VERSION="0.7.1.0"
 CUSPARSELT_NAME="libcusparse_lt-linux-aarch64-${CUSPARSELT_VERSION}-archive"
@@ -54,7 +62,11 @@ BUILD_VERSION=0.20.0
 python3 setup.py install --user
 cd ..
 
+echo "------------------------------------"
+echo "** Install step (3/4)"
+echo "------------------------------------"
 echo "Installing Python YOLO Modules..."
+
 python3 -m pip install -U ultralytics supervision
 
 echo "Building librealsense..."
@@ -77,6 +89,9 @@ echo "Installing ROS2 Humble Packages..."
 sudo apt install -y \
     ros-$ROS_DISTRO-vision-msgs
 
+echo "------------------------------------"
+echo "** Install step (4/4)"
+echo "------------------------------------"
 echo "Installing microRTPS-ROS2 bridge..."
 # Install microRTPS-ROS2 bridge https://docs.px4.io/main/en/ros2/user_guide#installation-setup
 
