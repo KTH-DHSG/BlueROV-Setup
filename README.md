@@ -8,7 +8,7 @@
 - [Hardware setup](setup_instructions/hardware_setup.md): Internal hardware setup
 - [SITL Simulation setup](setup_instructions/sim_setup.md): PX4 gz STIL simulation setup
 - [Wiring diagram](setup_instructions/brov-wiring-diagram-inkscape.svg): for more details on our specific hardware adaptations
-- [ROS2 Software Stack](https://github.com/KTH-DHSG/BlueROV-ROS-Modules): The repository conating the software stack for the BROV2s
+- [ROS2 Software Stack](https://github.com/KTH-DHSG/BlueROV-ROS-Modules): The repository containing the software stack for the BROV2s
 
 # TODOs BlueROV mods
 
