@@ -95,7 +95,7 @@ EOF
 sudo chmod 600 /etc/netplan/01-netcfg.yaml
 sudo netplan apply
 ```
-IMPORTANT! This netplan setup assumes the laptop has configured its IP to be <code>192.168.0.3</code>, so adjust this line if the IP is different.
+IMPORTANT! This netplan setup assumes the laptop has configured its IP to be <code>192.168.0.3</code>, so adjust this line if the IP is different. Similarily, the IP <code>192.168.0.22/24</code> is the IP we want to assign to the BROV2, change this line if you want a different one.
 
 
 ## Issues and Tips
