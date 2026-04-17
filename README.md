@@ -48,7 +48,7 @@
 
 - [x] Train YOLO underwater to recognize other BROV2s.
 - [x] Calibrate stereo-depth underwater.
-- [ ] Check USB 3.0 connection for stereo-cam to Jetson, maybe through USB-C to USB-C
+- [x] Check USB 3.0 connection for stereo-cam to Jetson, maybe through USB-C to USB-C
 - [ ] Train YOLO underwater to recognize divers and pose estimation.
 
 # TODOs for SITL simulation
