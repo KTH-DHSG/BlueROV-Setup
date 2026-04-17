@@ -1,23 +1,12 @@
 # BROV Jetson Internet Connection Setup
-## TO-DO:
-
-- add NetPlan so the ethernet connection set up does not need to be repeated via GUI each time on the laptop side, check if it is still an issue though after this setup
-
-- test how this tutorial works when setup for more than one brov on the same laptop (look for conflicts)
-
-- move the commands into two shell scripts (with input parameters for interface names and laptop IP) for the jetson and the laptop to make it easier and faster to setup
 
 ## Description
 
 The goal of this tutorial is to allow the Jetson computer access the internet via the BROVs ethernet thether connection.
 
-WARNING: this set up is designed for a single BROV. It might not work when trying to follow the instruction for another BROV using the same laptop/PC. It might overwrite some settings. This is something that still needs to be tested and expanded on.
-
 ## Prerequisites
 
-1. You need to first setup the ethernet connection between BROV and your laptop. If you are able to ssh to Jetson then you're good in that regard.
-
-2. The IP you set for your computer/laptop does matter here! The recommended convention is for the laptop computer to be: `192.168.0.X` whereas Jetson's IP is `192.168.0.(X+20)` e.g. `192.168.0.2` and `192.168.0.22`. In this tutorial laptop's IP will be referred to as `<laptop-IP>` whereas Jetson's IP will be `<jetson-IP>`.
+You need to first setup the ethernet connection between BROV and your laptop. If you are able to ssh to Jetson then you're good in that regard.
 
 ## Procedure
 
@@ -71,6 +60,12 @@ sudo cat /etc/netplan/01-netcfg.yaml
 ```
 If nothing is displayed, it means that the automatic setup was unsuccessful and the following needs to be done on the Jetson.
 
+Find Jetson LAN-facing device:
+```bash
+ip route | grep default
+```
+Which produces very similr output to the previous cases. Chose the device that has the LAN connection. We will call it \<Jetson-LAN-facing\>
+
 ```bash
 # download netplan
 sudo apt install netplan.io
@@ -95,25 +90,14 @@ EOF
 sudo chmod 600 /etc/netplan/01-netcfg.yaml
 sudo netplan apply
 ```
-IMPORTANT! This netplan setup assumes the laptop has configured its IP to be <code>192.168.0.3</code>, so adjust this line if the IP is different. Similarily, the IP <code>192.168.0.22/24</code> is the IP we want to assign to the BROV2, change this line if you want a different one.
+IMPORTANT! Change the Jetson's network device name from <code>enP8p1s0</code> to \<Jetson-LAN-facing\>.
+This netplan setup assumes the laptop has configured its IP to be <code>192.168.0.3</code>, so adjust this line if the IP is different. Similarily, the IP <code>192.168.0.22/24</code> is the IP we want to assign to the BROV2, change this line if you want a different one.
 
+Now check if the Jetson has access to the Internet:
+```bash
+# ping google to see if it resolves
+ping -c 3 google.com
+# ping the laptop to see if it resolves
+ping -c 3 192.168.0.22
 
-## Issues and Tips
-
-## References
-
-- [IP Forwarding Linux: How to Enable/Disable net.ipv4.ip_forward](https://linuxconfig.org/how-to-turn-on-off-ip-forwarding-in-linux)
-
-- [NAT with Linux | Marcus Folkesson Blog](https://www.marcusfolkesson.se/blog/nat-with-linux/)
-
-- [Network Address Translation (NAT) - GeeksforGeeks](https://www.geeksforgeeks.org/computer-networks/network-address-translation-nat/)
-
-- https://articulatedrobotics.xyz/tutorials/ready-for-ros/networking
-
-- https://sudamtm.medium.com/iptables-a-comprehensive-guide-276b8604eff1
-
-- [iptables(8) - Linux man page](https://linux.die.net/man/8/iptables)
-
-- https://www.frozentux.net/iptables-tutorial/iptables-tutorial.html#STATEMATCH
-
-- [Make Iptables Rules Persistent on Linux](https://linuxconfig.org/how-to-make-iptables-rules-persistent-after-reboot-on-linux)
+```
