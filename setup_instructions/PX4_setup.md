@@ -41,11 +41,18 @@ Follow the [spacelab setup](https://atmos.discower.io/pages/PX4/) for the first 
 The firmware installation works similar, but we choose a _different target_ and _different default namespace_:
 
 1. Connect the Pixhawk to your computer via serial. Make sure QGroundControl is closed.
-2. Navigate to the cloned PX4-Autopilot directory.
-3. Upload the firmware using:
-
+2. Navigate to the cloned PX4-Autopilot directory and ensure that the build environment is clean.
+```bash
+make clean
 ```
-PX4_UXRCE_DDS_NS=<robot_name> make px4_fmu-v6x_uuv upload
+3. Export the name of the robot to setup the DDS.
+```bash
+export PX4_UXRCE_DDS_NS=<robot_name>
+```
+4. Upload the firmware using:
+
+```bash
+make px4_fmu-v6x_uuv upload
 ```
 
 # Communication Setup
