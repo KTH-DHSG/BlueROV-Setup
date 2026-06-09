@@ -1,40 +1,58 @@
-Setup based on PX4 Autopilot
-<details>
+# PX4 Setup
 
-<summary>What's PX4?</summary>
+---
+
+## Table of Contents
+
+- [What's PX4?](<PX4_setup#What's PX4?>)
+- [Interfaces](PX4_setup#Interfaces:)
+- [Flashing and Setting up PX4](<PX4_setup#Flashing and Setting up PX4>)
+- [Communication Setup](<PX4_setup#Communication Setup>)
+  - [User-side setup](<PX4_setup#User-side setup>)
+  - [BlueROV-side setup](<PX4_setup#BlueROV-side setup>)
+    - [Jetson](PX4_setup#Jetson)
+    - [PX4](PX4_setup#PX4)
+    - [PX4 Setup](<PX4_setup#PX4 Setup>)
+- [Alternative setup directly over network](<PX4_setup#Alternative setup directly over network>)
+- [Common Issues](<PX4_setup#Common Issues>)
+
+---
+
+## What's PX4?
 
 - open software/hardware project serving as "brain" for all sorts of drones
-- Advantages: 
-    - Good software intergration: Easy integration of sensors etc., safety features, controller integration, ...
-    - Open Source: Multiple manufacturers produce for PX4, if one product is discontinued, there is a plug-and-play replacement from another manufacturer. 
-    - Good software integration with e.g. QGroundControl
-- Do not confuse: 
-    - PX4 Autopilot: The open-source system/project itself
-    - PX6X: The specific hardware on which we are running PX4 Autopilot
+- Advantages:
+  - Good software intergration: Easy integration of sensors etc., safety features, controller integration, ...
+  - Open Source: Multiple manufacturers produce for PX4, if one product is discontinued, there is a plug-and-play replacement from another manufacturer.
+  - Good software integration with e.g. QGroundControl
+- Do not confuse:
+  - PX4 Autopilot: The open-source system/project itself
+  - PX6X: The specific hardware on which we are running PX4 Autopilot
 
 </details>
 
-# Interfaces:
+## Interfaces:
+
 - Physical Interfaces
-    - Tether:
-        - connect Fathom-X tether interface via USB to your computer
-        - Establishes an ethernet connection to the whole BlueROV (i.e. the PX6X, but also e.g. the Jetson)
-        - setup instructions: see below (todo: insert link)
-    - USB-C:
-        - connect directly from your computer to PX6X (requires removal of tube)
-        - Fallback if PX6X is not available over Ethernet
-        - For now needed to update the firmware of the PX6X
+  - Tether:
+    - connect Fathom-X tether interface via USB to your computer
+    - Establishes an ethernet connection to the whole BlueROV (i.e. the PX6X, but also e.g. the Jetson)
+    - setup instructions: see below (todo: insert link)
+  - USB-C:
+    - connect directly from your computer to PX6X (requires removal of tube)
+    - Fallback if PX6X is not available over Ethernet
+    - For now needed to update the firmware of the PX6X
 - Software interfaces:
-    - QGroundControl
-        - Allows to set most settings in an easy-to-use graphical interface
-        - Console interface under "Analyze Tools > MavLink Console" for advanced use cases
-    - ROS2 interface: MavLink to ROS2 bridge (todo: insert link)
+  - QGroundControl
+    - Allows to set most settings in an easy-to-use graphical interface
+    - Console interface under "Analyze Tools > MavLink Console" for advanced use cases
+  - ROS2 interface: MavLink to ROS2 bridge (todo: insert link)
 
-# Flashing and Setting up PX4
+---
+
+## Flashing and Setting up PX4
+
 Theoretically, the flashing should be easily doable through QGroundControl ([PX4 Doc > Config > Firmware](https://docs.px4.io/main/en/config/firmware.html)). For current firmware version v1.16.0 this however leads to an incomplete install (BlueROV airframe not selectable), so this procedure works instead:
-
-> [!TIP]  
-> The target we use below is currently only available in the development release (v1.16.0.rc1), not in the latest stable release. Presumably this is why installing through QGroundControl does not work?
 
 Follow the [spacelab setup](https://atmos.discower.io/pages/PX4/) for the first three steps ("PX4 Autopilot" section).
 
@@ -42,21 +60,32 @@ The firmware installation works similar, but we choose a _different target_ and 
 
 1. Connect the Pixhawk to your computer via serial. Make sure QGroundControl is closed.
 2. Navigate to the cloned PX4-Autopilot directory and ensure that the build environment is clean.
+
 ```bash
 make clean
 ```
+
 3. Export the name of the robot to setup the DDS.
+
 ```bash
 export PX4_UXRCE_DDS_NS=<robot_name>
 ```
+
 4. Upload the firmware using:
 
 ```bash
 make px4_fmu-v6x_uuv upload
 ```
 
-# Communication Setup
+> [!Note]  
+> The target we use below is currently only available in the development release (v1.16.0.rc1), not in the latest stable release.
+
+---
+
+## Communication Setup
+
 Communication mainly follows standard networking approaches -> Knowledge of setting up IP networks is advantageous
+
 - Fathom-X is simply a transparent ethernet bridge (without own IP adress or so), whole network is a standard ethernet network
 - PX6X needs to be configured for communication over Ethernet. General instructions are under [PX4 docs > Advanced Config > Ethernet Setup](https://docs.px4.io/main/en/advanced_config/ethernet_setup), our setup follows:
 
@@ -66,39 +95,44 @@ Current setup: Follow original setup closely
 
 USB-Switch connecting to all Fathom-X interfaces. Each USB-cable should be detected as individual USB-ethernet interface in system network settings.
 
-## User-side setup
+### User-side setup
+
 Probably the easiest is to connect and set up one BlueROV at a time. Each Fathom-X Interface box (FXTI) connection gets its own network setting with own IP adress in the 192.168.0.X range. We recommend to use:
+
 - 192.168.0.1 for splash
 - 192.168.0.2 for bubble
 - 192.168.0.3 for glub
 
-The number is not very important as long as it is a free IP for your system/network and it is not already used for the PX4 IP address or Jetson IP address show in the table down-below. However, if you want to use ROS2 with PX4 keep this same exact numbering. To setup the connection IP number do the following:
+> [!Warning]
+> The number is not very important as long as it is a free IP for your system/network and it is not already used for the PX4 IP address or Jetson IP address show in the table down-below. However, if you want to use ROS2 with PX4 keep this same exact numbering. To setup the connection IP number do the following:
 
 1. Go to Settings > Network > Add
 2. Under Identity > Name, choose
-    - a profile name
-    - MAC address: Choose from dropdown (it is typically the one with the longest name).
+   - a profile name
+   - MAC address: Choose from dropdown (it is typically the one with the longest name).
+
 3. Under IPv4, choose
-    - IPv4 Method: Manual
-    - Address: 192.168.0.X (see above)
-    - Netmask: 255.255.255.0
-    - Gateway: 0.0.0.0
+   - IPv4 Method: Manual
+   - Address: 192.168.0.X (see above) OR select the corresponding FXTI IP if you plan on using ROS2
+   - Netmask: 255.255.255.0
+   - Gateway: 0.0.0.0
+
 4. Apply settings
 
 > [!NOTE]  
 > The first time you connect to QGC with the BlueROV2 and the FXTI it can take up to 60s to appear. If it takes longer you likely setup something wrong.
 
-## BlueROV-side setup
+### BlueROV-side setup
 
-### PX4
+#### PX4
 
 The network setup on robot side can be changed through QGroundControl. The current configuration is
 
-| BlueROV | FXTI address      | PX4 IP address    | Jetson IP address |
-|---------|-------------------|-------------------|-------------------|
-| splash  | 192.168.0.1       | 192.168.0.10      | 192.168.0.20      |
-| bubble  | 192.168.0.2       | 192.168.0.11      | 192.168.0.21      |
-| glub    | 192.168.0.3       | 192.168.0.12      | 192.168.0.22      |
+| BlueROV | FXTI address | PX4 IP address | Jetson IP address |
+| ------- | ------------ | -------------- | ----------------- |
+| splash  | 192.168.0.1  | 192.168.0.10   | 192.168.0.20      |
+| bubble  | 192.168.0.2  | 192.168.0.11   | 192.168.0.21      |
+| glub    | 192.168.0.3  | 192.168.0.12   | 192.168.0.22      |
 
 They should already be set correctly and **we recommend to not touch this**, but in case you need to you can change them by doing the following: go to "Analyze Tools > MavLink Console". Then type params (or any other keyword) so that you can see the console shows "nsh>" instead of just ">". Then input:
 
@@ -119,19 +153,20 @@ Rebooting through the MavLink Console sometimes does not work. You can also go t
 
 Now you should be able to run the Micro-XRCE-DDS-Agent and use ROS2 topics as described in the simulator section: [sim_setup.md](sim_setup.md). Note that if you have changed the FXTI address you need to change the UXRCE_DDS_AG_IP parameter in the Parameters tab of QGC to the signed int32 equivalent of your FXTI IP address.
 
-### Jetson 
+#### Jetson
 
 Under Settings > Network > Realtek Ethernet set a static IP with the addresses stated above. The process is the same one as the user-side setup without the extra steps.
 
-> [IMPORTANT!]
+> [!IMPORTANT]
 > This setup does _not_ allow the Jetson to access the internet. To achieve this, two methods are possible (plus the alternative setup described below).
-> 1. Enable IP forwarding and set up NAT (Network Address Translation) on your desktop computer 
+>
+> 1. Enable IP forwarding and set up NAT (Network Address Translation) on your desktop computer
 > 2. Take of the shell on the front (camera side), connect an ethernet cable to the second ethernet port of the Jetson
-> Personally, I think that the alternative setup has a lot of advantages and simplifies working with the robots a lot.
+>    Personally, I think that the alternative setup has a lot of advantages and simplifies working with the robots a lot.
 
-<details>
+---
 
-<summary>__Alternative setup directly over network__</summary>
+## Alternative setup directly over network
 
 A better setup could be that the BlueROVs are directly connected to the lab network. Then, any computer in the network could access them (i.e. also over Wifi). This could be rather easily achieved as follows:
 
@@ -139,40 +174,60 @@ The blue Fathom-X box contains the same tether interface that is also in the Blu
 
 ```
 Setup now:
-                         Fathom-X interface                                                                  
-                       ┌────────────────────────────────────────────┐                                        
-   ┌─────────┐         │                     Standard               │       ┌───────────────┐                
-   │         │ Tether  │ ┌──────────────────┐Ethernet┌────────────┐ │ USB   │               │                
-   │ BlueROV ├─────────┼─┤ Ethernet interfac├────────┤Ethernet to ├─┼───────┤ Your computer │                
-   │         │         │ └──────────────────┘        │USB-Ethernet│ │       │               │                
-   └─────────┘         │                             └────────────┘ │       └───────────────┘                
-                       │                                            │                                        
-                       └────────────────────────────────────────────┘                                        
-                                                                                                             
+                         Fathom-X interface
+                       ┌────────────────────────────────────────────┐
+   ┌─────────┐         │                     Standard               │       ┌───────────────┐
+   │         │ Tether  │ ┌──────────────────┐Ethernet┌────────────┐ │ USB   │               │
+   │ BlueROV ├─────────┼─┤ Ethernet interfac├────────┤Ethernet to ├─┼───────┤ Your computer │
+   │         │         │ └──────────────────┘        │USB-Ethernet│ │       │               │
+   └─────────┘         │                             └────────────┘ │       └───────────────┘
+                       │                                            │
+                       └────────────────────────────────────────────┘
+
 Alternative setup:
-                         Fathom-X interface                                                                  
-                       ┌────────────────────────────────────────────┐                                        
-   ┌─────────┐         │                     Standard               │       ┌───────────────┐                
-   │         │ Tether  │ ┌──────────────────┐Ethernet               │       │               │                
-   │ BlueROV ├─────────│─┤ Ethernet interfac├───────┐               │       │ Your computer │                
-   │         │         │ └──────────────────┘       │               │       │               │                
-   └─────────┘         │                            │               │       └─────┬─────────┘                
-                       │                            │               │             │                          
-                       └────────────────────────────┼───────────────┘             │Internet connection       
-                                                    │                             │over Lab network          
-                                                    │                             │- ethernet, wifi,...      
-                                                    │                             │                          
-                                                    │                       ┌─────┴────┐                     
-                                                    └───────────────────────│ Ethernet │                     
-                                                     Other BlueROV ─────────│ Switch   │                     
-                                                     Other BlueROV ─────────│          │                     
-                                                                            └──────────┘                     
+                         Fathom-X interface
+                       ┌────────────────────────────────────────────┐
+   ┌─────────┐         │                     Standard               │       ┌───────────────┐
+   │         │ Tether  │ ┌──────────────────┐Ethernet               │       │               │
+   │ BlueROV ├─────────│─┤ Ethernet interfac├───────┐               │       │ Your computer │
+   │         │         │ └──────────────────┘       │               │       │               │
+   └─────────┘         │                            │               │       └─────┬─────────┘
+                       │                            │               │             │
+                       └────────────────────────────┼───────────────┘             │Internet connection
+                                                    │                             │over Lab network
+                                                    │                             │- ethernet, wifi,...
+                                                    │                             │
+                                                    │                       ┌─────┴────┐
+                                                    └───────────────────────│ Ethernet │
+                                                     Other BlueROV ─────────│ Switch   │
+                                                     Other BlueROV ─────────│          │
+                                                                            └──────────┘
 ```
 
 (If you're wondering why the interface exists at all: The tether is a 2-wire ethernet cable that is better for long distances - on both ends, this is then converted through the adapter to standard ethernet. For some reason, BlueRobotics decided that it is better to have this additionally converted on user-side to USB-ethernet.)
 
-> [IMPORTANT!]
+> [!IMPORTANT]
 > Before setting up this variant: Make sure that there are enough Ethernet ports available in the Marinarium (seems like their ethernet switch has not too many ports). Maybe necessary to buy an additional switch.
-</details>
 
+---
 
+## Common Issues
+
+PX4 Issues:
+
+1. Micro XRCE DDS doesn't connect to the companion laptop.
+   When the Micro XRCE DDS agent doesn't detect the DDS client running on PX4, it most likely means that the IP set for the companion laptop is not the same set in the DDS config. To check the IP targeted by the client on PX4, do the following: Open **QGround**/**Analyze Tools**/**MAVlink Console** and type in the terminal
+
+   ```bash
+    xrce_dds_client status
+   ```
+
+   This should output the current targeted IP of the DDS client running on PX4. Make sure the companion computer that is supposed to receive the ROS2 messages has the same IP configured in the network settings.
+
+   The IP used by the DDS client on PX4 can be changed if need be. To do so go into **QGround**/**Parameters** and search for **XRCE_DDS_IP_AG** and change that parameter to the IP you want the client to target.
+
+   > [!Caution]
+   > The parameter used in QGround is in `int32` format so the IP has to be converted to a binary representation first and then saved in `int32`. This can be done using C/C++ type `int32_t`.
+
+2. Gazebo simulation doesn't have the BROV2 models.
+   The PX4 repository used for the PX4 flashing is the official one, hence it doesn't have the required files for Gazebo simulation. To get the PX4 fork that has the Gazebo files, follow the simulation instructions here [https://github.com/KTH-DHSG/BlueROV-Setup/blob/main/setup_instructions/sim_setup.md](https://github.com/KTH-DHSG/BlueROV-Setup/blob/main/setup_instructions/sim_setup.md)
