@@ -13,7 +13,6 @@
     - [Jetson](PX4_setup#Jetson)
     - [PX4](PX4_setup#PX4)
     - [PX4 Setup](<PX4_setup#PX4 Setup>)
-- [Alternative setup directly over network](<PX4_setup#Alternative setup directly over network>)
 - [Common Issues](<PX4_setup#Common Issues>)
 
 ---
@@ -77,7 +76,7 @@ export PX4_UXRCE_DDS_NS=<robot_name>
 make px4_fmu-v6x_uuv upload
 ```
 
-> [!Note]  
+> [!Note]
 > The target we use below is currently only available in the development release (v1.16.0.rc1), not in the latest stable release.
 
 ---
@@ -97,30 +96,28 @@ USB-Switch connecting to all Fathom-X interfaces. Each USB-cable should be detec
 
 ### User-side setup
 
-Probably the easiest is to connect and set up one BlueROV at a time. Each Fathom-X Interface box (FXTI) connection gets its own network setting with own IP adress in the 192.168.0.X range. We recommend to use:
+Probably the easiest is to connect and set up one BlueROV at a time. Each Fathom-X Interface box (FXTI) connection gets its own network setting with own IP adress and subnet.
 
-- 192.168.0.1 for splash
-- 192.168.0.2 for bubble
-- 192.168.0.3 for glub
+| BlueROV | Laptop IP | Subnet Mask (Netmask) | Gateway | Status |
+| --- | --- | --- | --- | --- |
+| Splash | 192.168.0.1 | 255.255.255.0 | 0.0.0.0 | Done |
+| Bubble | 192.168.1.2 | 255.255.255.0 | 0.0.0.0 | Done |
+| Glub | 192.168.2.3 | 255.255.255.0 | 0.0.0.0 | To be done |
 
-> [!Warning]
-> The number is not very important as long as it is a free IP for your system/network and it is not already used for the PX4 IP address or Jetson IP address show in the table down-below. However, if you want to use ROS2 with PX4 keep this same exact numbering. To setup the connection IP number do the following:
+
 
 1. Go to Settings > Network > Add
 2. Under Identity > Name, choose
-   - a profile name
-   - MAC address: Choose from dropdown (it is typically the one with the longest name).
+   - a profile name (we suggest the name of the BROV)
 
 3. Under IPv4, choose
    - IPv4 Method: Manual
-   - Address: 192.168.0.X (see above) OR select the corresponding FXTI IP if you plan on using ROS2
-   - Netmask: 255.255.255.0
-   - Gateway: 0.0.0.0
+   - Fill the corresponding fields from the table above
 
 4. Apply settings
 
 > [!NOTE]  
-> The first time you connect to QGC with the BlueROV2 and the FXTI it can take up to 60s to appear. If it takes longer you likely setup something wrong.
+> The first time you connect to QGC with the BlueROV2 and the Fathom, it can take a long time for the PX4 to be detected.
 
 ### BlueROV-side setup
 
@@ -128,30 +125,55 @@ Probably the easiest is to connect and set up one BlueROV at a time. Each Fathom
 
 The network setup on robot side can be changed through QGroundControl. The current configuration is
 
-| BlueROV | FXTI address | PX4 IP address | Jetson IP address |
-| ------- | ------------ | -------------- | ----------------- |
-| splash  | 192.168.0.1  | 192.168.0.10   | 192.168.0.20      |
-| bubble  | 192.168.0.2  | 192.168.0.11   | 192.168.0.21      |
-| glub    | 192.168.0.3  | 192.168.0.12   | 192.168.0.22      |
+| BlueROV | UXRCE_DDS_KEY | Fathom (Laptop) IP | PX4 IP | Subnet Mask | Status |
+|---|---|---|---|---|---|
+| Splash | 1 | 192.168.0.1 | 192.168.0.10 | 255.255.255.0 | Done |
+| Bubble | 2 | 192.168.1.2 | 192.168.1.11 | 255.255.255.0 | Done |
+| Glub | 3 | 192.168.2.3 | 192.168.2.12 | 255.255.255.0 | To be done |
 
-They should already be set correctly and **we recommend to not touch this**, but in case you need to you can change them by doing the following: go to "Analyze Tools > MavLink Console". Then type params (or any other keyword) so that you can see the console shows "nsh>" instead of just ">". Then input:
+>[!Important]
+> Each BROV should have a different UXRCE_DDS_KEY. This can be changed in the parameters tab in QGroundControl.
+
+To ensure that we can run multiple BROVs at the same time, we must ensure that they run on separate subnets. They should already be set correctly and **we recommend to not touch this**, but in case you need to you can change them by doing the following: go to "Analyze Tools > MavLink Console". Then type params (or any other keyword) so that you can see the console shows "nsh>" instead of just ">". Then input:
 
 ```
-# Overwrite the file (note the single > on first line)
+# Splash
 echo DEVICE=eth0 > /fs/microsd/net.cfg
 echo BOOTPROTO=fallback >> /fs/microsd/net.cfg
-echo IPADDR=192.168.0.X >> /fs/microsd/net.cfg    # Replace X with the respective PX4 adress above
+echo IPADDR=192.168.0.10 >> /fs/microsd/net.cfg
 echo NETMASK=255.255.255.0 >> /fs/microsd/net.cfg
-echo ROUTER=192.168.0.231 >> /fs/microsd/net.cfg  # Or whatever the router/DNS server adress is
-echo DNS=192.168.0.231 >> /fs/microsd/net.cfg
+echo ROUTER=192.168.0.1 >> /fs/microsd/net.cfg
+echo DNS=192.168.0.1 >> /fs/microsd/net.cfg
+reboot
+```
 
-# Then reboot to apply
+```
+# Bubble
+echo DEVICE=eth0 > /fs/microsd/net.cfg
+echo BOOTPROTO=fallback >> /fs/microsd/net.cfg
+echo IPADDR=192.168.1.11 >> /fs/microsd/net.cfg
+echo NETMASK=255.255.255.0 >> /fs/microsd/net.cfg
+echo ROUTER=192.168.1.2 >> /fs/microsd/net.cfg
+echo DNS=192.168.1.2 >> /fs/microsd/net.cfg
+reboot
+```
+
+```
+# Glub
+echo DEVICE=eth0 > /fs/microsd/net.cfg
+echo BOOTPROTO=fallback >> /fs/microsd/net.cfg
+echo IPADDR=192.168.2.12 >> /fs/microsd/net.cfg
+echo NETMASK=255.255.255.0 >> /fs/microsd/net.cfg
+echo ROUTER=192.168.2.3 >> /fs/microsd/net.cfg
+echo DNS=192.168.2.3 >> /fs/microsd/net.cfg
 reboot
 ```
 
 Rebooting through the MavLink Console sometimes does not work. You can also go to Vehicle Configuration > Parameters tab and then click Tools > Reboot Vehicle.
 
-Now you should be able to run the Micro-XRCE-DDS-Agent and use ROS2 topics as described in the simulator section: [sim_setup.md](sim_setup.md). Note that if you have changed the FXTI address you need to change the UXRCE_DDS_AG_IP parameter in the Parameters tab of QGC to the signed int32 equivalent of your FXTI IP address.
+Now you should be able to run the Micro-XRCE-DDS-Agent and use ROS2 topics as described in the simulator section: [sim_setup.md](sim_setup.md). 
+
+>[!Note] Note that if you have changed the Fathom (laptop) address you need to change the UXRCE_DDS_AG_IP parameter in the Parameters tab of QGC to the signed int32 equivalent of your Fathom IP address.
 
 #### Jetson
 
@@ -163,56 +185,9 @@ Under Settings > Network > Realtek Ethernet set a static IP with the addresses s
 > 1. Enable IP forwarding and set up NAT (Network Address Translation) on your desktop computer
 > 2. Take of the shell on the front (camera side), connect an ethernet cable to the second ethernet port of the Jetson
 >    Personally, I think that the alternative setup has a lot of advantages and simplifies working with the robots a lot.
-
----
-
-## Alternative setup directly over network
-
-A better setup could be that the BlueROVs are directly connected to the lab network. Then, any computer in the network could access them (i.e. also over Wifi). This could be rather easily achieved as follows:
-
-The blue Fathom-X box contains the same tether interface that is also in the BlueROV. The interface has an ethernet port, that is (in the current configuration) routed through an adapter board to the USB port of the Fathom-X. This ethernet port could instead be directly connected to a switch on the lab network (i.e. without the USB board in the Fathom-X). Any computer on the same network could then find the robots, and also the three-fold setup of the UBS-ethernet on user side would not be needed any more. IP addresses would centrally be assigned by DHCP reservation on network side through MAC address.
-
-```
-Setup now:
-                         Fathom-X interface
-                       ┌────────────────────────────────────────────┐
-   ┌─────────┐         │                     Standard               │       ┌───────────────┐
-   │         │ Tether  │ ┌──────────────────┐Ethernet┌────────────┐ │ USB   │               │
-   │ BlueROV ├─────────┼─┤ Ethernet interfac├────────┤Ethernet to ├─┼───────┤ Your computer │
-   │         │         │ └──────────────────┘        │USB-Ethernet│ │       │               │
-   └─────────┘         │                             └────────────┘ │       └───────────────┘
-                       │                                            │
-                       └────────────────────────────────────────────┘
-
-Alternative setup:
-                         Fathom-X interface
-                       ┌────────────────────────────────────────────┐
-   ┌─────────┐         │                     Standard               │       ┌───────────────┐
-   │         │ Tether  │ ┌──────────────────┐Ethernet               │       │               │
-   │ BlueROV ├─────────│─┤ Ethernet interfac├───────┐               │       │ Your computer │
-   │         │         │ └──────────────────┘       │               │       │               │
-   └─────────┘         │                            │               │       └─────┬─────────┘
-                       │                            │               │             │
-                       └────────────────────────────┼───────────────┘             │Internet connection
-                                                    │                             │over Lab network
-                                                    │                             │- ethernet, wifi,...
-                                                    │                             │
-                                                    │                       ┌─────┴────┐
-                                                    └───────────────────────│ Ethernet │
-                                                     Other BlueROV ─────────│ Switch   │
-                                                     Other BlueROV ─────────│          │
-                                                                            └──────────┘
-```
-
-(If you're wondering why the interface exists at all: The tether is a 2-wire ethernet cable that is better for long distances - on both ends, this is then converted through the adapter to standard ethernet. For some reason, BlueRobotics decided that it is better to have this additionally converted on user-side to USB-ethernet.)
-
-> [!IMPORTANT]
-> Before setting up this variant: Make sure that there are enough Ethernet ports available in the Marinarium (seems like their ethernet switch has not too many ports). Maybe necessary to buy an additional switch.
-
 ---
 
 ## Common Issues
-
 PX4 Issues:
 
 1. Micro XRCE DDS doesn't connect to the companion laptop.
