@@ -125,14 +125,14 @@ Probably the easiest is to connect and set up one BlueROV at a time. Each Fathom
 
 The network setup on robot side can be changed through QGroundControl. The current configuration is
 
-| BlueROV | UXRCE_DDS_KEY | Fathom (Laptop) IP | PX4 IP | Subnet Mask | Status |
-|---|---|---|---|---|---|
-| Splash | 1 | 192.168.0.1 | 192.168.0.10 | 255.255.255.0 | Done |
-| Bubble | 2 | 192.168.1.2 | 192.168.1.11 | 255.255.255.0 | Done |
-| Glub | 3 | 192.168.2.3 | 192.168.2.12 | 255.255.255.0 | To be done |
+| BlueROV | UXRCE_DDS_KEY | MAV_SYS_ID| Fathom (Laptop) IP | PX4 IP | Subnet Mask | Status |
+|---|---|---|---|---|---|---|
+| Splash | 1 | 1 | 192.168.0.1 | 192.168.0.10 | 255.255.255.0 | Done |
+| Bubble | 2 | 2 | 192.168.1.2 | 192.168.1.11 | 255.255.255.0 | Done |
+| Glub | 3 | 3 | 192.168.2.3 | 192.168.2.12 | 255.255.255.0 | To be done |
 
 >[!Important]
-> Each BROV should have a different UXRCE_DDS_KEY. This can be changed in the parameters tab in QGroundControl.
+> Each BROV should have a different UXRCE_DDS_KEY (default -1) **AND** MAV_SYS_ID (default 1). This can be changed in the parameters tab in QGroundControl.
 
 To ensure that we can run multiple BROVs at the same time, we must ensure that they run on separate subnets. They should already be set correctly and **we recommend to not touch this**, but in case you need to you can change them by doing the following: go to "Analyze Tools > MavLink Console". Then type params (or any other keyword) so that you can see the console shows "nsh>" instead of just ">". Then input:
 
@@ -174,6 +174,9 @@ Rebooting through the MavLink Console sometimes does not work. You can also go t
 Now you should be able to run the Micro-XRCE-DDS-Agent and use ROS2 topics as described in the simulator section: [sim_setup.md](sim_setup.md). 
 
 >[!Note] Note that if you have changed the Fathom (laptop) address you need to change the UXRCE_DDS_AG_IP parameter in the Parameters tab of QGC to the signed int32 equivalent of your Fathom IP address.
+<p align="center">
+<image src=img/multipleBROVsQGroundROS.png>
+</p>
 
 #### Jetson
 
