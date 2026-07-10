@@ -85,6 +85,12 @@
     ```bash
     PX4_GZ_WORLD=kth_marinarium make px4_sitl_uuv gz_uuv_bluerov2_heavy
     ```
+
+    There is also a version with the docking station:
+
+    ```bash
+    PX4_GZ_WORLD=kth_marinarium_docking make px4_sitl_uuv gz_uuv_bluerov2_heavy
+    ```
     
     #### Running Micro-XRCE-DDS-Agent Locally
     
