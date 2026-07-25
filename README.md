@@ -24,7 +24,7 @@
   - [x] Glub
   - [x] Splash
   - [ ] <del>Bubble</del>
-- [ ] Test controlling multiple ROVs at once (can be dry test I guess?)
+- [x] Test controlling multiple ROVs at once (can be dry test I guess?)
 - [ ] Add startup scripts in Jetson and PX4 to
   - [ ] auto-start the MVALink-ROS2 Bridge (see Usage.md#Start PX4/ROS communication)
   - [ ] auto-start camera node
@@ -53,7 +53,7 @@
 
 # TODOs for SITL simulation
 
-- [ ] Create a multi-agent water tank simulation with multiple brov2s using https://github.com/DISCOWER/discower_launch/tree/main/discower_launch/launch
+- [x] Create a multi-agent water tank simulation with multiple brov2s using https://github.com/DISCOWER/discower_launch/tree/main/discower_launch/launch
 
 # TODOs for documentation
 
