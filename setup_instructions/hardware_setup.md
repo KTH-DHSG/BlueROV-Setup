@@ -47,10 +47,6 @@ The BlueROV has three tubes:
 
 For a more detailed view, take a look at the wiring diagram.
 
-## Wiring diagram
-
-(to be added by Cezary)
-
 ## Motor setup
 
 The motor assignments in PX4 follow the numbering of BlueRobotics:
