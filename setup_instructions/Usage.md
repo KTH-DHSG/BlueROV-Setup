@@ -78,7 +78,7 @@ ping 192.168.0.<your robots IP>
 ```
 ssh discower@<jetson_IP>
 ```
-for user and PW 'discower'.
+for user and PW 'discower'. If it does not work, change the username from discower to glub or splash (depending on which robot you use).
 
 4. Optional: Start all ROS services, e.g. start the Intel RealSense node.
 ```

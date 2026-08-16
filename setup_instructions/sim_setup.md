@@ -85,6 +85,12 @@
     ```bash
     PX4_GZ_WORLD=kth_marinarium make px4_sitl_uuv gz_uuv_bluerov2_heavy
     ```
+
+    There is also a version with the docking station:
+
+    ```bash
+    PX4_GZ_WORLD=kth_marinarium_docking make px4_sitl_uuv gz_uuv_bluerov2_heavy
+    ```
     
     #### Running Micro-XRCE-DDS-Agent Locally
     
@@ -133,3 +139,44 @@
     Now you can send inputs through the ``/fmu/in/vehicle_thrust_setpoint`` and ``/fmu/in/vehicle_torque_setpoint`` topics, the ``/fmu/in/vehicle_rates_setpoint`` topic or the ``/fmu/in/actuator_motors`` topic (depending on your heartbeat node type). You can find an example of my thrust_and_torque hearbeat node here: [https://kth-my.sharepoint.com/:u:/g/personal/vnfa_ug_kth_se/IQB1s1Xqxo_QSptLPT2AlvvkAd5DF3hMsSnaLL8aPBzlZ88?e=jHeFbE.](https://kth-my.sharepoint.com/:u:/g/personal/vnfa_ug_kth_se/IQB1s1Xqxo_QSptLPT2AlvvkAZ1-ba43ZigrbaFGL0r4nk8?e=un4wrJ). I recommend to always use thrust_and_torque.
 
 9. If you want an example of a ROS2 controller working in the simulator you can check the **Stabilized Control** or **PID Position Control** from [here](https://github.com/KTH-DHSG/bluerov2_control). You may need to ask for permission to see the repo, if so email [Victor](vnfa@kth.se).
+
+10. **Running multiple BlueROV2s:**
+
+    After cloning and building the [`bluerov2_control`](https://github.com/KTH-DHSG/bluerov2_control) ROS 2 package, launch three BlueROV2 Heavy vehicles in the Marinarium docking world with:
+
+    ```bash
+    cd ~/px4_ws
+    source install/setup.bash
+    ros2 launch bluerov2_control multi_bluerov2_sim.launch.py
+    ```
+
+    The vehicles use the ROS 2 namespaces:
+
+    ```text
+    /itrl_rov_1
+    /itrl_rov_2
+    /itrl_rov_3
+    ```
+
+    The number of vehicles, namespaces, spawn delays and instance IDs can be edited in:
+
+    ```text
+    bluerov2_control/launch/multi_bluerov2_sim.launch.py
+    ```
+
+    The initial positions can be edited through the `rov_1_pose`, `rov_2_pose` and `rov_3_pose` launch arguments. For example:
+
+    ```bash
+    ros2 launch bluerov2_control multi_bluerov2_sim.launch.py \
+        rov_1_pose:="-1.15,-2.20,-95.70,0,0,0" \
+        rov_2_pose:="0.10,-2.20,-95.70,0,0,0" \
+        rov_3_pose:="-2.40,-2.20,-95.70,0,0,0"
+    ```
+
+    If the `PX4-Autopilot` path cannot be found automatically you can pass its path directly with:
+
+    ```bash
+    ros2 launch bluerov2_control multi_bluerov2_sim.launch.py \
+        px4_dir:=/absolute/path/to/PX4-Autopilot
+    ```
+
