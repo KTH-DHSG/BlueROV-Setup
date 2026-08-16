@@ -1,19 +1,12 @@
 # Docking station
 
-
 ## Introduction
 
-The docking station was made to allow for "parking" the BlueROVs (BROV) in the water tank. The assumption is that the robot is neutrally bouyant as this way it will flow up and press against the docking shell making it locked in space. The docking shell was made in such a way to allow both the BROV with the extra tube on top as well as the one without the extra tube to be able to dock in it. Admittedly, it is better for docking the BROVs with extra tube on top as it is fits better into the shell.
+The docking station was made to allow for "parking" the BlueROVs (BROV) in the water tank. The assumption is that the robot is slightly bouyant as this way it will flow up and press against the docking shell making it locked in space. The docking shell was made in such a way to allow both the BROV with the extra tube on top as well as the one without the extra tube to be able to dock in it. Admittedly, it is better for docking the BROVs with extra tube on top as it is fits better into the shell.
 
 <p align="center">
   <img width="400" src="img/docking_station.png">
 </p>
-
-## Docking station installation in the tank
-
-To install the docking station in the tank you can use the aluminum extrusions that can be found around the edge of the tank above the water level. Slot the docking station into the tank extrusion's ridge and tighten it using a hex key.
-
-**TODO**: add an image showing the installation process
 
 ## Files
 
@@ -33,4 +26,4 @@ Feel free to explore the CAD file. There are more variables for detailed adjustm
 
 ## Debugging
 
-- There is some problems with exporting `.obj` files in FreeCAD 1.1.0. Exporting the part into an STL file and then reopining that file and exproting it into OBJ file does the trick though.
+- There is an issue with exporting `.obj` files in FreeCAD 1.1.0. Exporting the part into an STL file and then opening that file and exproting it into OBJ file does the trick though.
