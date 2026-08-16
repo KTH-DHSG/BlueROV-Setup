@@ -6,5 +6,6 @@
 - [Jetson software setup](setup_instructions/scripts/BlueROV_Jetson_setup.sh): Install script for a newly flashed Jetson
 - [Internet on Jetson](setup_instructions/Jetson_internet.md): Getting internet access to Jetson via tether
 - [Hardware setup](setup_instructions/hardware_setup.md): Internal hardware setup
+- [Docking station setup](setup_instructions/docking_station.md): Setting up, modifying and using the docking station
 - [SITL Simulation setup](setup_instructions/sim_setup.md): PX4 gz STIL simulation setup
 - [Wiring diagram](setup_instructions/brov-wiring-diagram-inkscape.svg): for more details on our specific hardware adaptations
